@@ -21,7 +21,7 @@ const posts = (await getCollection("blog"))
         {posts.map((post) => (
           <li>
             <a
-              href={`/blog/${post.id}`}
+              href={`/blog/${post.id.replace(/\.mdx$/, "")}`}
               class="group block p-6 rounded-lg border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all"
             >
               <div class="flex items-start justify-between gap-6">
