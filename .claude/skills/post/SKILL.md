@@ -34,26 +34,27 @@ git ls-files --others --exclude-standard
 대상 MDX 파일을 읽고 frontmatter 검증:
 
 **필수 필드:**
+
 - `title` (문자열, 비어있지 않음)
-- `date` (유효한 날짜)
-- `description` (문자열, 비어있지 않음)
+- `date` (유효한 YYYY-MM-DD 날짜)
+- `description` (문자열, 비어있지 않음, 160자 이하)
 
 **선택 필드 형식:**
+
 - `categories` — 배열
 - `tags` — 배열
 - `image` — 객체 (`src`, `alt` 필드)
 
 실패 시 → 에러 출력 + 중단. 누락 필드 명시.
 
-### Step 3: 빌드 검증
+### Step 3: 빌드 검증 (builder agent 위임)
 
-```bash
-npm run build
+```
+Task → builder agent: "빌드를 실행하고 결과를 보고하세요."
 ```
 
-- 성공 → Step 4로
-- 실패 → 에러 분석 + 수정 시도 + 재빌드
-- 2회 실패 → 에러 출력 + 중단
+- PASS → Step 4로
+- FAIL → 에러 출력 + 중단
 
 ### Step 4: 링크 검증
 
@@ -63,92 +64,86 @@ npm run build
 - **외부 링크**: HTTP HEAD 요청으로 유효성 확인 (타임아웃 5초)
 
 ```bash
-# 외부 링크 확인 예시
 curl -sI -m 5 -o /dev/null -w "%{http_code}" "https://example.com"
 ```
 
-- 깨진 링크 발견 시 → 경고 출력 (중단하지 않음)
+깨진 링크 발견 시 → 경고 출력 (중단하지 않음, LINK_RESULT에 기록)
 
-### Step 5: Lighthouse 검증
-
-```bash
-# 프리뷰 서버 시작 (백그라운드)
-npm run preview &
-PREVIEW_PID=$!
-sleep 3
-```
-
-- Playwright MCP로 `http://localhost:4321` 접속
-- Performance, Accessibility, Best Practices, SEO 점수 확인
-- 점수 < 80이면 경고 출력
+### Step 5: 커밋 타입 결정
 
 ```bash
-# 프리뷰 서버 종료
-kill $PREVIEW_PID
-```
-
-### Step 6: Feature Branch 생성 + 커밋
-
-```bash
-# slug = MDX 파일명에서 확장자 제거
 SLUG=$(basename "$MDX_FILE" .mdx)
-
-git checkout -b "post/${SLUG}"
-git add "$MDX_FILE"
-# 관련 이미지 파일도 함께 staging
-git add public/images/ 2>/dev/null || true
-git commit -m "post: ${TITLE}"
+DATE=$(grep '^date:' "$MDX_FILE" | head -1 | sed 's/date: *//')
+TITLE=$(grep '^title:' "$MDX_FILE" | head -1 | sed 's/title: *//' | tr -d '"')
 ```
 
-### Step 7: PR 생성
+기존 포스트 여부 확인:
 
 ```bash
-git push origin "post/${SLUG}"
+git log --oneline -- "$MDX_FILE"
+```
+
+- 결과 있음 → `COMMIT_TYPE="update"`
+- 결과 없음 → `COMMIT_TYPE="new"`
+
+### Step 6: 브랜치 생성 (서브스킬 위임)
+
+```
+Skill → /branch: "blog {DATE}"
+```
+
+생성 브랜치: `blog-{yyyy-mm-dd}`
+
+### Step 7: 스테이징 + 커밋 (서브스킬 위임)
+
+```bash
+git add "$MDX_FILE"
+git add public/images/ 2>/dev/null || true
+```
+
+```
+Skill → /commit: "blog: {COMMIT_TYPE}-{SLUG}"
+```
+
+### Step 8: Push + PR 생성
+
+```bash
+git push -u origin "blog-{DATE}"
 
 gh pr create \
-  --title "post: ${TITLE}" \
+  --title "blog: ${TITLE}" \
   --body "$(cat <<EOF
-## 검증 결과
+## Blog Post
 
-- ✅ Frontmatter 검증 통과
-- ✅ 빌드 성공
-- ${LINK_RESULT}
-- ${LIGHTHOUSE_RESULT}
+**Title**: ${TITLE}
+**Date**: ${DATE}
+**URL**: https://heeyounggoo.github.io/blog/${SLUG}
+
+## Checklist
 
 ### Frontmatter
-- title: ${TITLE}
-- date: ${DATE}
-- categories: ${CATEGORIES}
-- tags: ${TAGS}
+- [x] \`title\` — 비어있지 않음
+- [x] \`date\` — 유효한 YYYY-MM-DD 형식
+- [x] \`description\` — 존재함
+- [x] \`draft: false\`
+
+### Build
+- [x] \`npm run build\` 성공
+
+## Validation
+- Build: ✅ 성공
+- Broken links: ${LINK_RESULT}
 EOF
-)"
+)" \
+  --base master
 ```
 
-### Step 8: 리뷰 에이전트 실행
+PR 번호 저장: `PR_NUMBER`
 
-`reviewer` 에이전트에 MDX 파일 리뷰 위임:
-
-- **PASS** → Step 9로 진행
-- **FAIL** → PR에 코멘트 추가, 사용자에게 수정 요청 후 중단
-
-```bash
-# FAIL 시 PR에 코멘트
-gh pr comment --body "## Review: ❌ FAIL\n\n${REVIEW_ISSUES}"
-```
-
-### Step 9: 자동 머지 + 정리
-
-```bash
-gh pr merge --squash --auto
-git checkout master
-git pull origin master
-git branch -d "post/${SLUG}"
-```
-
-최종 출력:
+### Step 9: 머지 (서브스킬 위임)
 
 ```
-✅ 포스트 '{TITLE}'이(가) 발행되었습니다.
-GitHub Actions 배포가 시작됩니다.
-URL: https://heeyounggoo.github.io/blog/${SLUG}
+Skill → /merge: "{PR_NUMBER} blog-{DATE} https://heeyounggoo.github.io/blog/{SLUG}"
 ```
+
+`/merge`가 `review.yml` 체크 통과 대기 후 squash merge 수행.

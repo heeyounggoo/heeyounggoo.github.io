@@ -53,10 +53,10 @@ const { title, href, isActive = false } = Astro.props;
 
 클라이언트 JS가 필요한 경우에만 `client:*` 디렉티브를 사용한다.
 
-| Directive        | 사용 시점                              |
-| ---------------- | -------------------------------------- |
-| `client:load`    | 즉시 필요한 인터랙션 (모달 토글 등)    |
-| `client:idle`    | 페이지 로드 후 여유 시간에 (분석 등)   |
+| Directive        | 사용 시점                             |
+| ---------------- | ------------------------------------- |
+| `client:load`    | 즉시 필요한 인터랙션 (모달 토글 등)   |
+| `client:idle`    | 페이지 로드 후 여유 시간에 (분석 등)  |
 | `client:visible` | 뷰포트에 보일 때 (댓글, 하단 위젯 등) |
 
 기본 원칙: **JavaScript 없이 가능하면 JavaScript를 쓰지 않는다.**
@@ -80,9 +80,7 @@ const { title, href, isActive = false } = Astro.props;
 `getCollection()` 사용 시 항상 draft 필터링을 적용한다.
 
 ```ts
-const posts = (await getCollection("blog")).filter(
-  (post) => !post.data.draft,
-);
+const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
 ```
 
 정렬은 날짜 내림차순:
@@ -112,6 +110,4 @@ import heroImage from "../assets/hero.png";
 
 ## TypeScript
 
-- 타입은 가능한 한 명시적으로 작성한다.
-- `any` 사용을 피한다.
-- 컴포넌트 Props는 `interface Props`로 정의한다.
+TypeScript 컨벤션은 `.claude/rules/typescript.md` 참조.

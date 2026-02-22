@@ -12,6 +12,7 @@ PROTECTED_FILES=(
 
 PROTECTED_PATTERNS=(
   ".github/workflows/"
+  ".github/PULL_REQUEST_TEMPLATE/"
 )
 
 # Read JSON from stdin
