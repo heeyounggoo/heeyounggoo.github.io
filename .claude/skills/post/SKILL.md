@@ -105,37 +105,10 @@ git add public/images/ 2>/dev/null || true
 Skill → /commit: "blog: {COMMIT_TYPE}-{SLUG}"
 ```
 
-### Step 8: Push + PR 생성
+### Step 8: PR 생성 (서브스킬 위임)
 
-```bash
-git push -u origin "blog-{DATE}"
-
-gh pr create \
-  --title "blog: ${TITLE}" \
-  --body "$(cat <<EOF
-## Blog Post
-
-**Title**: ${TITLE}
-**Date**: ${DATE}
-**URL**: https://heeyounggoo.github.io/blog/${SLUG}
-
-## Checklist
-
-### Frontmatter
-- [x] \`title\` — 비어있지 않음
-- [x] \`date\` — 유효한 YYYY-MM-DD 형식
-- [x] \`description\` — 존재함
-- [x] \`draft: false\`
-
-### Build
-- [x] \`npm run build\` 성공
-
-## Validation
-- Build: ✅ 성공
-- Broken links: ${LINK_RESULT}
-EOF
-)" \
-  --base master
+```
+Skill → /pr: "blog blog-{DATE} \"blog: {TITLE}\" TITLE={TITLE} DATE={DATE} URL=https://heeyounggoo.github.io/blog/{SLUG} BUILD_RESULT=✅ 성공 LINK_RESULT={LINK_RESULT}"
 ```
 
 PR 번호 저장: `PR_NUMBER`

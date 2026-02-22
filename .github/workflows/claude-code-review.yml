@@ -2,43 +2,126 @@ name: Claude Code Review
 
 on:
   pull_request:
+    branches: [master]
     types: [opened, synchronize, ready_for_review, reopened]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: read
+  id-token: write
+
+concurrency:
+  group: review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
-  claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
-
+  review:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
-      issues: read
-      id-token: write
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Get changed files
+        id: changed
+        run: |
+          git diff --name-only origin/master...HEAD > changed_files.txt
+          echo "Changed files:"
+          cat changed_files.txt
+
+      - name: Detect PR type
+        id: pr-type
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          if echo "$LABELS" | grep -q "blog"; then
+            echo "type=blog" >> $GITHUB_OUTPUT
+            echo "PR type: blog"
+          else
+            echo "type=feature" >> $GITHUB_OUTPUT
+            echo "PR type: feature"
+          fi
+
+      - name: Validate MDX frontmatter (blog PRs only)
+        id: frontmatter
+        if: steps.pr-type.outputs.type == 'blog'
+        run: |
+          npm ci --silent
+          node - <<'EOF'
+          const fs = require('fs');
+
+          const changedFiles = fs.readFileSync('changed_files.txt', 'utf8')
+            .split('\n')
+            .filter(f => f.match(/^src\/content\/blog\/.*\.mdx$/));
+
+          let failed = false;
+          const issues = [];
+
+          for (const file of changedFiles) {
+            if (!fs.existsSync(file)) continue;
+            const content = fs.readFileSync(file, 'utf8');
+
+            const match = content.match(/^---\n([\s\S]*?)\n---/);
+            if (!match) {
+              issues.push(`${file}: frontmatter 없음`);
+              failed = true;
+              continue;
+            }
+
+            const fm = match[1];
+
+            if (!fm.match(/^title:\s*.+/m)) {
+              issues.push(`${file}: 'title' 필드 없음 또는 비어있음`);
+              failed = true;
+            }
+            if (!fm.match(/^date:\s*\d{4}-\d{2}-\d{2}/m)) {
+              issues.push(`${file}: 'date' 필드 없음 또는 잘못된 형식 (YYYY-MM-DD 필요)`);
+              failed = true;
+            }
+            if (!fm.match(/^description:\s*.+/m)) {
+              issues.push(`${file}: 'description' 필드 없음 또는 비어있음`);
+              failed = true;
+            }
+            if (fm.match(/^draft:\s*true/m)) {
+              issues.push(`${file}: draft: true — 배포 전 false로 변경 필요`);
+              failed = true;
+            }
+          }
+
+          if (failed) {
+            console.log('FRONTMATTER_FAIL');
+            fs.writeFileSync('frontmatter_issues.txt', issues.join('\n'));
+            process.exit(1);
+          } else {
+            console.log('FRONTMATTER_PASS');
+          }
+          EOF
+
+      - name: Post frontmatter failure comment
+        if: failure() && steps.frontmatter.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REVIEW_BODY="## Review: ❌ FAIL (Frontmatter 검증 실패)\n\n### Frontmatter Issues\n"
+          while IFS= read -r line; do
+            REVIEW_BODY="${REVIEW_BODY}- ❌ ${line}\n"
+          done < frontmatter_issues.txt
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "$(printf "${REVIEW_BODY}\n\n@gooheeyoung 위 이슈를 수정 후 다시 push해주세요.")"
 
       - name: Run Claude Code Review
-        id: claude-review
+        if: success()
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-

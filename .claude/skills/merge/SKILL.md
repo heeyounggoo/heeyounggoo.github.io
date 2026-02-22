@@ -1,8 +1,6 @@
 ---
 name: merge
-description: PR을 squash merge하고 브랜치를 정리한다. review.yml 체크 통과 후
-  머지하며, remote/local 브랜치 삭제 후 master를 최신화한다.
-  /post와 /feature 스킬에서 파이프라인 마지막 단계로 호출된다.
+description: PR을 squash merge하고 브랜치를 정리한다. review.yml 체크 통과 후 머지하며, remote/local 브랜치 삭제 후 master를 최신화한다. /post와 /feature 스킬에서 파이프라인 마지막 단계로 호출된다.
 allowed-tools: Bash
 ---
 
