@@ -2,12 +2,12 @@
 
 ## Project Overview
 
-| Key       | Value                                |
-| --------- | ------------------------------------ |
-| URL       | `https://heeyounggoo.github.io`      |
-| Locale    | `ko-KR`                             |
-| Branch    | `master`                             |
-| Framework | Astro 5 + Tailwind CSS 4 + MDX      |
+| Key       | Value                           |
+| --------- | ------------------------------- |
+| URL       | `https://heeyounggoo.github.io` |
+| Locale    | `ko-KR`                         |
+| Branch    | `master`                        |
+| Framework | Astro 5 + Tailwind CSS 4 + MDX  |
 
 개인 포트폴리오 & 기술 블로그. GitHub Pages로 배포.
 
@@ -72,12 +72,12 @@ export const collections = { blog };
 
 ### Routing
 
-| Route            | Purpose       |
-| ---------------- | ------------- |
-| `/`              | 포트폴리오    |
-| `/blog`          | 블로그 목록   |
-| `/blog/[slug]`   | 블로그 포스트 |
-| `/resume`        | 이력서        |
+| Route          | Purpose       |
+| -------------- | ------------- |
+| `/`            | 포트폴리오    |
+| `/blog`        | 블로그 목록   |
+| `/blog/[slug]` | 블로그 포스트 |
+| `/resume`      | 이력서        |
 
 ---
 
@@ -136,12 +136,12 @@ heeyounggoo.github.io/
 
 ## Design Tokens
 
-| Token      | Value                  |
-| ---------- | ---------------------- |
-| Primary    | `#F97316` (orange-500) |
-| Font       | Pretendard, system-ui  |
-| Radius     | `rounded-lg` (8px)     |
-| Max Width  | `max-w-4xl` (896px)    |
+| Token     | Value                  |
+| --------- | ---------------------- |
+| Primary   | `#F97316` (orange-500) |
+| Font      | Pretendard, system-ui  |
+| Radius    | `rounded-lg` (8px)     |
+| Max Width | `max-w-4xl` (896px)    |
 
 Pretendard 폰트 CDN:
 
@@ -156,12 +156,12 @@ Pretendard 폰트 CDN:
 
 ## Routing Table
 
-| Route            | File                              | Description          |
-| ---------------- | --------------------------------- | -------------------- |
-| `/`              | `src/pages/index.astro`           | 포트폴리오 메인      |
-| `/blog`          | `src/pages/blog/index.astro`      | 블로그 목록          |
-| `/blog/[slug]`   | `src/pages/blog/[...slug].astro`  | 블로그 포스트 상세   |
-| `/resume`        | `src/pages/resume.astro`          | 이력서 페이지        |
+| Route          | File                             | Description        |
+| -------------- | -------------------------------- | ------------------ |
+| `/`            | `src/pages/index.astro`          | 포트폴리오 메인    |
+| `/blog`        | `src/pages/blog/index.astro`     | 블로그 목록        |
+| `/blog/[slug]` | `src/pages/blog/[...slug].astro` | 블로그 포스트 상세 |
+| `/resume`      | `src/pages/resume.astro`         | 이력서 페이지      |
 
 ---
 
@@ -246,18 +246,21 @@ import myImage from "../assets/my-image.png";
 또는 `public/images/`의 정적 이미지:
 
 ```html
-<img src="/images/photo.png" alt="설명" />
+<img
+  src="/images/photo.png"
+  alt="설명"
+/>
 ```
 
 ---
 
 ## Commands
 
-| Command             | Description              |
-| ------------------- | ------------------------ |
-| `npm run dev`       | 개발 서버 (localhost:4321) |
-| `npm run build`     | 프로덕션 빌드 (dist/)     |
-| `npm run preview`   | 빌드 결과 프리뷰          |
+| Command           | Description                |
+| ----------------- | -------------------------- |
+| `npm run dev`     | 개발 서버 (localhost:4321) |
+| `npm run build`   | 프로덕션 빌드 (dist/)      |
+| `npm run preview` | 빌드 결과 프리뷰           |
 
 ---
 
@@ -320,55 +323,9 @@ GitHub Actions로 자동 배포. `master` 브랜치 push 시 트리거.
 ### PreToolUse: File Protection
 
 `Edit` 도구 사용 전 보호 대상 파일 변경 차단:
+
 - `CLAUDE.md`
 - `.github/workflows/*`
 - `package-lock.json`
 
 ---
-
-## Resume Data
-
-### 경력
-
-| 회사       | 기간              | 역할              |
-| ---------- | ----------------- | ----------------- |
-| 라이드     | 2019.07 – 2021.07 | 프론트엔드 개발자 |
-| 핏투게더   | 2021.08 – 2023.08 | 프론트엔드 개발자 |
-| ANTLabs    | 2023.10 – 현재     | 프론트엔드 개발자 |
-
-### 프로젝트
-
-1. **모빌리티 서비스 개발** (라이드) — React, Redux, Kakao Map API
-2. **디자인시스템 구축** (라이드) — React, TypeScript, Storybook, Rollup
-3. **스포츠 선수 리포트 서비스** (핏투게더) — React, TypeScript, Recharts, Recoil
-4. **리포트 서비스 & ANTLabs 연계** (핏투게더/ANTLabs) — React, React Query, react-window
-5. **대학교 학사 시스템** (ANTLabs) — React, TypeScript, Next.js, Nx, Playwright
-
-### 기술스택
-
-- **Frontend**: React, TypeScript, Next.js, JavaScript, HTML/CSS, Tailwind CSS
-- **State & Tools**: Redux, Recoil, Git, Figma, Storybook
-
-### 학력
-
-- 한국 대학교 컴퓨터공학 전공 (2015.03 – 2019.02)
-
----
-
-## Migration Checklist (Jekyll → Astro)
-
-- [ ] Astro 5 프로젝트 초기화 (`npm create astro@latest`)
-- [ ] Tailwind CSS 4 + `@tailwindcss/vite` 설정
-- [ ] MDX 인테그레이션 추가 (`@astrojs/mdx`)
-- [ ] Content Collections 스키마 정의 (`content.config.ts`)
-- [ ] 기존 블로그 포스트 MDX 변환 (`_posts/*.md` → `src/content/blog/*.mdx`)
-- [ ] 이미지 마이그레이션 (`images/` → `public/images/`)
-- [ ] 레이아웃 생성 (Base, Blog, Portfolio)
-- [ ] 포트폴리오 메인 페이지 (`/`)
-- [ ] 블로그 목록 페이지 (`/blog`)
-- [ ] 블로그 포스트 동적 라우트 (`/blog/[slug]`)
-- [ ] 이력서 페이지 (`/resume`) — `resume-a.html` 기반
-- [ ] GitHub Actions 배포 워크플로우
-- [ ] Pretendard 폰트 + 디자인 토큰 적용
-- [ ] 기존 Jekyll 파일 정리 (`_config.yml`, `_layouts/`, `_includes/`, `_sass/` 등)
-- [ ] 빌드 검증 + Lighthouse 점수 확인
