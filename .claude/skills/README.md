@@ -14,8 +14,8 @@
 Feature 개발 워크플로우 오케스트레이터. 요구사항 수집 → 브랜치 생성 → 단계별 구현 → 빌드 검증 → PR → 머지.
 
 ```
-사용법: /feature [요구사항]
-예시:   /feature add dark mode toggle
+사용법: /feature
+        (실행 후 요구사항을 대화로 입력)
 ```
 
 ### `/deploy`
@@ -42,6 +42,16 @@ master 브랜치에서 직접 배포가 필요할 때 사용. 빌드 검증 후 
 ```
 입력: {type}: {description}
 예시: blog: new-react-19
+```
+
+### `/pr` (서브스킬)
+
+`/post`, `/feature`에서 내부 호출. 템플릿 기반 PR 생성. blog 타입은 Title/Date/URL/빌드 결과를 템플릿에 치환.
+
+```
+입력: {type} {branch} {title} [TITLE=... DATE=... URL=... BUILD_RESULT=... LINK_RESULT=...]
+예시: blog blog-2026-02-22 "blog: My Post" TITLE="My Post" DATE=2026-02-22 ...
+예시: feature feature/add-dark-mode "feat: Add dark mode"
 ```
 
 ### `/merge` (서브스킬)

@@ -1,7 +1,6 @@
 ---
 name: branch
-description: 프로젝트 브랜치 명명 규칙에 따라 master 기준 브랜치를 생성한다.
-  /post와 /feature 스킬에서 내부적으로 호출된다.
+description: 프로젝트 브랜치 명명 규칙에 따라 master 기준 브랜치를 생성한다. /post와 /feature 스킬에서 내부적으로 호출된다.
 allowed-tools: Bash
 ---
 

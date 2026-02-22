@@ -37,8 +37,10 @@ jobs:
 
       - name: Detect PR type
         id: pr-type
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
         run: |
-          if grep -qE "^src/content/blog/.*\.mdx$" changed_files.txt; then
+          if echo "$LABELS" | grep -q "blog"; then
             echo "type=blog" >> $GITHUB_OUTPUT
             echo "PR type: blog"
           else
