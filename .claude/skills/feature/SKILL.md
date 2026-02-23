@@ -41,15 +41,24 @@ SUMMARY = 핵심 기능명을 kebab-case로 변환 (예: "add-dark-mode-toggle")
 
 requirements-analyst가 Questions를 반환하면: 사용자에게 질문 후 답변 수집.
 
-### Step 3: Plan Mode 선언
+### Step 3: Plan Mode 선언 + 사용자 확인
 
-출력:
+requirements-analyst spec을 바탕으로 구현 계획을 작성한 후 사용자에게 출력:
 
 ```
 feature/{SUMMARY} 시작합니다.
 모든 변경은 Plan mode로 진행됩니다.
 각 Phase마다 변경 내용을 제안하고 확인을 받은 후 구현합니다.
+
+[구현 계획]
+- Phase 1: {설명}
+- Phase 2: {설명}
+...
+
+이 계획대로 진행할까요? (수정이 필요하면 알려주세요)
 ```
+
+사용자가 승인하면 Step 4로. 수정 요청이 있으면 계획을 조정 후 재확인.
 
 ### Step 4: 단계별 구현
 
@@ -71,8 +80,17 @@ d. Phase 커밋: git add {관련 파일들}
 Task → builder agent: "빌드를 실행하고 에러를 분석하세요. 수정 가능한 에러는 수정 후 재빌드."
 ```
 
-- PASS → Step 6으로
 - FAIL (2회 시도 후) → 에러 출력 + 중단
+- PASS → 사용자에게 추가 작업 여부 확인:
+
+```
+빌드 검증이 완료되었습니다.
+추가로 작업할 내용이 있나요?
+```
+
+- **있다** → Step 1(요구사항 수집) → Step 3(계획 수립 + 확인) → Step 4(구현) → Step 5(빌드 검증) 순서로 재실행.
+  브랜치는 이미 존재하므로 Step 2(브랜치 생성)는 건너뜀.
+- **없다** → Step 6으로
 
 ### Step 6: PR 생성 (서브스킬 위임)
 
