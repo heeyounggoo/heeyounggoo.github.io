@@ -224,7 +224,7 @@ import { profile } from "../data/profile";
       font-size: 20px;
       font-weight: 700;
       color: #111111;
-      margin-bottom: 20px;
+      margin-bottom: 4px;
       letter-spacing: -0.3px;
     }
 
@@ -233,16 +233,30 @@ import { profile } from "../data/profile";
     }
 
     .project-section-label {
-      display: inline-flex;
-      align-items: center;
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 8px;
+    }
+
+    .project-title + .tech-tags {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-title + .tech-tags .tech-tag:nth-child(odd) {
       background: #fff7ed;
       color: #ea580c;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      border: 1px solid #fdba74;
-      margin-bottom: 8px;
+      border-color: #fed7aa;
+      border-radius: 8px;
+    }
+
+    .project-title + .tech-tags .tech-tag:nth-child(even) {
+      background: #f9fafb;
+      color: #4b5563;
+      border-color: #e5e7eb;
+      border-radius: 8px;
     }
 
     .project-content ul {
@@ -493,17 +507,17 @@ import { profile } from "../data/profile";
       <span class="project-service">모빌리티 서비스 개발</span>
     </div>
 
-    <div class="tech-tags" style="margin-bottom: 16px;">
+    <div class="project-title">프론트엔드 개발 환경 설계</div>
+
+    <div class="tech-tags">
       <span class="tech-tag">Turborepo</span>
       <span class="tech-tag">pnpm</span>
       <span class="tech-tag">React 19</span>
       <span class="tech-tag">Next.js</span>
-      <span class="tech-tag secondary">zod</span>
-      <span class="tech-tag secondary">husky</span>
-      <span class="tech-tag secondary">lint-staged</span>
+      <span class="tech-tag">zod</span>
+      <span class="tech-tag">husky</span>
+      <span class="tech-tag">lint-staged</span>
     </div>
-
-    <div class="project-title">프론트엔드 개발 환경 설계</div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
@@ -568,16 +582,16 @@ import { profile } from "../data/profile";
       <span class="project-service">디자인시스템</span>
     </div>
 
-    <div class="tech-tags" style="margin-bottom: 16px;">
+    <div class="project-title">디자인시스템 구축</div>
+
+    <div class="tech-tags">
       <span class="tech-tag">React</span>
       <span class="tech-tag">TypeScript</span>
       <span class="tech-tag">Storybook</span>
-      <span class="tech-tag secondary">Rollup</span>
-      <span class="tech-tag secondary">CSS Modules</span>
-      <span class="tech-tag secondary">GitHub Actions</span>
+      <span class="tech-tag">Rollup</span>
+      <span class="tech-tag">CSS Modules</span>
+      <span class="tech-tag">GitHub Actions</span>
     </div>
-
-    <div class="project-title">디자인시스템 구축</div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
@@ -614,16 +628,16 @@ import { profile } from "../data/profile";
       <span class="project-service">스포츠 선수 리포트 서비스</span>
     </div>
 
-    <div class="tech-tags" style="margin-bottom: 16px;">
+    <div class="project-title">스포츠 선수 리포트 서비스 개발</div>
+
+    <div class="tech-tags">
       <span class="tech-tag">React</span>
       <span class="tech-tag">TypeScript</span>
       <span class="tech-tag">Recharts</span>
-      <span class="tech-tag secondary">Recoil</span>
-      <span class="tech-tag secondary">React Query</span>
-      <span class="tech-tag secondary">html2canvas</span>
+      <span class="tech-tag">Recoil</span>
+      <span class="tech-tag">React Query</span>
+      <span class="tech-tag">html2canvas</span>
     </div>
-
-    <div class="project-title">스포츠 선수 리포트 서비스 개발</div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
@@ -660,16 +674,16 @@ import { profile } from "../data/profile";
       <span class="project-service">리포트 서비스 고도화</span>
     </div>
 
-    <div class="tech-tags" style="margin-bottom: 16px;">
+    <div class="project-title">리포트 서비스 개발 & ANTLabs 연계</div>
+
+    <div class="tech-tags">
       <span class="tech-tag">React</span>
       <span class="tech-tag">TypeScript</span>
       <span class="tech-tag">React Query</span>
-      <span class="tech-tag secondary">react-window</span>
-      <span class="tech-tag secondary">SheetJS</span>
-      <span class="tech-tag secondary">Ant Design</span>
+      <span class="tech-tag">react-window</span>
+      <span class="tech-tag">SheetJS</span>
+      <span class="tech-tag">Ant Design</span>
     </div>
-
-    <div class="project-title">리포트 서비스 개발 & ANTLabs 연계</div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
@@ -706,17 +720,17 @@ import { profile } from "../data/profile";
       <span class="project-service">대학교 학사 시스템</span>
     </div>
 
-    <div class="tech-tags" style="margin-bottom: 16px;">
+    <div class="project-title">대학교 학사 시스템 개발</div>
+
+    <div class="tech-tags">
       <span class="tech-tag">React</span>
       <span class="tech-tag">TypeScript</span>
       <span class="tech-tag">Next.js</span>
-      <span class="tech-tag secondary">Nx (모노레포)</span>
-      <span class="tech-tag secondary">WebSocket</span>
-      <span class="tech-tag secondary">Playwright</span>
-      <span class="tech-tag secondary">Tailwind CSS</span>
+      <span class="tech-tag">Nx (모노레포)</span>
+      <span class="tech-tag">WebSocket</span>
+      <span class="tech-tag">Playwright</span>
+      <span class="tech-tag">Tailwind CSS</span>
     </div>
-
-    <div class="project-title">대학교 학사 시스템 개발</div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
