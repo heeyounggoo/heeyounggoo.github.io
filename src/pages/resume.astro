@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile } from "../data/profile";
 ---
 
 <BaseLayout title="이력서 | 구희영" description="구희영 프론트엔드 개발자 경력기술서">
@@ -305,14 +306,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       color: #cccccc;
     }
 
-    .page-label {
-      position: absolute;
-      bottom: 28px;
-      left: 64px;
-      font-size: 11px;
-      color: #cccccc;
-    }
-
     @media print {
       body {
         background: white;
@@ -336,52 +329,87 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="contact-grid">
         <div class="contact-item">
           <span class="label">Email</span>
-          <span>gmldud628@gmail.com</span>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
         </div>
         <div class="contact-item">
           <span class="label">GitHub</span>
-          <span>github.com/heeyounggoo</span>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer">
+            github.com/heeyounggoo
+          </a>
         </div>
       </div>
-    </div>
-
-    <!-- 자기소개 -->
-    <div class="section">
-      <p
-        style="font-size: 13.5px; line-height: 1.9; color: #444444; padding: 16px 20px; background: #fff7ed; border-left: 3px solid #f97316; border-radius: 4px;"
-      >
-        매 순간 새로운 도전을 두려워하지 않으며, 실행 속에서 배우고 성장하는 것을
-        즐깁니다. 이러한 태도로 팀과 함께 더 나은 방향으로 나아가며, 문제를
-        해결하는 개발자로서 가치 있는 결과를 만들어가고 싶습니다.
-      </p>
     </div>
 
     <!-- 기술 스택 -->
     <div class="section">
       <h2>기술스택</h2>
-      <div style="margin-bottom: 12px;">
-        <h3
-          style="font-size:12px; color:#888; font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;"
-        >
-          Frontend
-        </h3>
-        <div class="tech-tags">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">TypeScript</span>
-          <span class="tech-tag">Vue.js</span>
+      {
+        Object.entries(profile.skills).map(([category, items]) => (
+          <div style="margin-bottom: 12px;">
+            <h3
+              style="font-size:12px; color:#888; font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;"
+            >
+              {category}
+            </h3>
+            <div class="tech-tags">
+              {items.map((skill) => (
+                <span
+                  class={
+                    category === "Frontend" ? "tech-tag" : "tech-tag secondary"
+                  }
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 경력 -->
+    <div class="section">
+      <h2>경력사항</h2>
+      <div class="career-item">
+        <div class="career-date">
+          <div class="company">라이드</div>
+          <div class="duration">2023.10 – 현재</div>
+          <div style="font-size:11px; color:#aaa; margin-top:2px;">재직 중</div>
+        </div>
+        <div class="career-content">
+          <div class="position">프론트엔드 개발자</div>
+          <ul>
+            <li>모빌리티 서비스 프론트엔드 개발</li>
+            <li>사내 디자인시스템 구축 및 컴포넌트 라이브러리 개발</li>
+          </ul>
         </div>
       </div>
-      <div style="margin-bottom: 12px;">
-        <h3
-          style="font-size:12px; color:#888; font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;"
-        >
-          Tools
-        </h3>
-        <div class="tech-tags">
-          <span class="tech-tag secondary">Git</span>
-          <span class="tech-tag secondary">Figma</span>
-          <span class="tech-tag secondary">Storybook</span>
+
+      <div class="career-item">
+        <div class="career-date">
+          <div class="company">핏투게더</div>
+          <div class="duration">2021.08 – 2023.08</div>
+          <div style="font-size:11px; color:#aaa; margin-top:2px;">2년</div>
+        </div>
+        <div class="career-content">
+          <div class="position">프론트엔드 개발자</div>
+          <ul>
+            <li>스포츠 선수 리포트 서비스 프론트엔드 개발</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="career-date">
+          <div class="company">ANTLabs</div>
+          <div class="duration">2019.03 – 2021.07</div>
+          <div style="font-size:11px; color:#aaa; margin-top:2px;">2년</div>
+        </div>
+        <div class="career-content">
+          <div class="position">프론트엔드 개발자</div>
+          <ul>
+            <li>대학교 학사 시스템 프론트엔드 개발</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -405,60 +433,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <!-- 경력 -->
-    <div class="section">
-      <h2>경력사항</h2>
-      <div class="career-item">
-        <div class="career-date">
-          <div class="company">ANTLabs</div>
-          <div class="duration">2019.03 – 2021.07</div>
-          <div style="font-size:11px; color:#aaa; margin-top:2px;">2년</div>
-        </div>
-        <div class="career-content">
-          <div class="position">프론트엔드 개발자</div>
-          <ul>
-            <li>대학교 학사 관리 시스템 프론트엔드 개발</li>
-            <li>복잡한 폼/워크플로우 UX 개선 및 최적화</li>
-            <li>레거시 시스템 현대화 (React + TypeScript 마이그레이션)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-date">
-          <div class="company">핏투게더</div>
-          <div class="duration">2021.08 – 2023.08</div>
-          <div style="font-size:11px; color:#aaa; margin-top:2px;">2년</div>
-        </div>
-        <div class="career-content">
-          <div class="position">프론트엔드 개발자</div>
-          <ul>
-            <li>스포츠 선수 리포트 서비스 프론트엔드 개발</li>
-            <li>데이터 시각화 기반 리포트 서비스 구현</li>
-            <li>ANTLabs 연계 프로젝트 리포트 기능 확장</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-date">
-          <div class="company">라이드</div>
-          <div class="duration">2023.10 – 현재</div>
-          <div style="font-size:11px; color:#aaa; margin-top:2px;">재직 중</div>
-        </div>
-        <div class="career-content">
-          <div class="position">프론트엔드 개발자</div>
-          <ul>
-            <li>모빌리티 서비스 프론트엔드 개발 참여</li>
-            <li>React 기반 SPA 아키텍처 구현</li>
-            <li>사내 디자인시스템 구축 및 컴포넌트 라이브러리 개발</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">1 / 6</span>
+<span class="page-num">1 / 6</span>
   </div>
 
   <!-- PAGE A-2: 라이드 모빌리티 서비스 -->
@@ -509,8 +484,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">2 / 6</span>
+<span class="page-num">2 / 6</span>
   </div>
 
   <!-- PAGE A-3: 라이드 디자인시스템 -->
@@ -560,8 +534,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">3 / 6</span>
+<span class="page-num">3 / 6</span>
   </div>
 
   <!-- PAGE A-4: 핏투게더 스포츠 선수 리포트 -->
@@ -611,8 +584,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">4 / 6</span>
+<span class="page-num">4 / 6</span>
   </div>
 
   <!-- PAGE A-5: 핏투게더 리포트 & ANTLabs -->
@@ -662,8 +634,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">5 / 6</span>
+<span class="page-num">5 / 6</span>
   </div>
 
   <!-- PAGE A-6: ANTLabs 학사시스템 -->
@@ -714,7 +685,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <span class="page-label">구희영 경력기술서 · Version A</span>
-    <span class="page-num">6 / 6</span>
+<span class="page-num">6 / 6</span>
   </div>
 </BaseLayout>
