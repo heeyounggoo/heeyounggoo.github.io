@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { profile } from "../data/profile";
 
 interface Props {
   title: string;
@@ -63,7 +64,7 @@ function isActive(path: string) {
       <div class="max-w-4xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-400">
         <span>© {new Date().getFullYear()} 구희영</span>
         <a
-          href="https://github.com/gooheeyoung"
+          href={profile.github}
           target="_blank"
           rel="noopener noreferrer"
           class="hover:text-orange-500 transition-colors"
