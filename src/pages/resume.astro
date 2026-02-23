@@ -485,51 +485,75 @@ import { profile } from "../data/profile";
 <span class="page-num">1 / 6</span>
   </div>
 
-  <!-- PAGE A-2: 라이드 모빌리티 서비스 -->
+  <!-- PAGE A-2: 라이드 프론트엔드 개발 환경 설계 -->
   <div class="page">
     <div class="project-header">
-      <div class="project-meta">
-        <span class="project-company-badge">라이드</span>
-        <span class="project-period">2019.07 – 2021.07</span>
-      </div>
-      <div class="project-title">모빌리티 서비스 개발</div>
-      <div class="project-subtitle">라이드 앱의 사용자 화면 및 예약·결제 플로우 프론트엔드 개발</div>
+      <span class="project-company">라이드</span>
+      <span class="project-service-sep">·</span>
+      <span class="project-service">모빌리티 서비스 개발</span>
     </div>
 
+    <div class="tech-tags" style="margin-bottom: 16px;">
+      <span class="tech-tag">Turborepo</span>
+      <span class="tech-tag">pnpm</span>
+      <span class="tech-tag">React 19</span>
+      <span class="tech-tag">Next.js</span>
+      <span class="tech-tag secondary">zod</span>
+      <span class="tech-tag secondary">husky</span>
+      <span class="tech-tag secondary">lint-staged</span>
+    </div>
+
+    <div class="project-title">프론트엔드 개발 환경 설계</div>
+
     <div class="project-section">
-      <div class="project-section-title">프로젝트 개요</div>
+      <span class="project-section-label">배경</span>
       <div class="project-content">
         <ul>
-          <li>React 기반 모빌리티 서비스 사용자 인터페이스 개발</li>
-          <li>지도 연동 실시간 차량 위치 추적 기능 구현</li>
-          <li>예약, 결제, 탑승 이력 관리 플로우 설계 및 개발</li>
-          <li>크로스 플랫폼(웹/모바일 웹) 대응 반응형 UI 개발</li>
+          <li>개별 레포지토리 관리로 인한 중복 기능 발생</li>
+          <li>신규 도메인 확장 시 web/admin에서 공통으로 사용되는 부분들이 많아짐에 따라 개발 생산성 고려</li>
         </ul>
       </div>
     </div>
 
     <div class="project-section">
-      <div class="project-section-title">주요 역할 및 기여</div>
+      <span class="project-section-label">작업 상세</span>
       <div class="project-content">
         <ul>
-          <li>신규 예약 플로우 UI/UX 설계 참여 및 컴포넌트 구현</li>
-          <li>카카오맵 API 연동 및 커스텀 마커/오버레이 개발</li>
-          <li>결제 모듈(PG사 연동) 프론트엔드 통합 작업</li>
-          <li>사용자 리뷰 및 별점 시스템 UI 컴포넌트 개발</li>
-          <li>성능 최적화: React.memo, useMemo 적용으로 렌더링 30% 개선</li>
+          <li><strong>Turborepo</strong>와 <strong>pnpm</strong> 기반의 모노레포 도입 제안하여 프론트엔드 개발 환경 통합</li>
+          <li>각 서비스에 맞는 프레임워크 사용
+            <ul class="sub-list">
+              <li><strong>React 19(Admin)</strong>
+                <ul class="sub-sub-list">
+                  <li>비즈니스 로직 복잡도가 높아 서버/클라이언트 경계 관리 부담을 줄이고 클라이언트 상태 관리에 집중</li>
+                  <li>복잡한 데이터 테이블과 form 처리 성능 개선</li>
+                  <li>react-query 기반 클라이언트 캐싱 전략 적용 — Optimistic Update 및 실시간 상태 반영(Query Invalidate)</li>
+                </ul>
+              </li>
+              <li><strong>Next.js(Web)</strong>
+                <ul class="sub-sub-list">
+                  <li>차량 구매 도메인을 위해 SEO 최적화 필요</li>
+                  <li>SSR을 통한 초기 렌더링 속도 개선</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><code>pnpm catalog</code>를 통한 의존성 최적화 및 버전 일관성 유지</li>
+          <li>CI/CD 효율화 — Turborepo의 캐싱 및 필터링 기능을 활용하여 변경된 내용만 빌드/배포</li>
+          <li>zod를 이용한 API 요청/응답값 type 검증하여 안정성 확보</li>
+          <li>husky + lint-staged 활용해 커밋 전 lint/type 오류 사전 검증</li>
+          <li>AI 사용 시 필요한 프론트엔드 Rules/Skills 가이드라인 작성</li>
         </ul>
       </div>
     </div>
 
     <div class="project-section">
-      <div class="project-section-title">사용 기술</div>
-      <div class="tech-tags">
-        <span class="tech-tag">React</span>
-        <span class="tech-tag">JavaScript</span>
-        <span class="tech-tag">Redux</span>
-        <span class="tech-tag secondary">Kakao Map API</span>
-        <span class="tech-tag secondary">Styled Components</span>
-        <span class="tech-tag secondary">Axios</span>
+      <span class="project-section-label">인사이트</span>
+      <div class="project-content">
+        <ul>
+          <li>CI/CD 효율화로 배포 리소스 절감</li>
+          <li>온보딩 시간 단축 — 신규 개발자가 하나의 레포에서 전체 컨텍스트 파악 가능, 초기 적응 기간 단축</li>
+          <li>프론트엔드 팀 개발 생산성 향상, 코드 일관성 확보</li>
+        </ul>
       </div>
     </div>
 
