@@ -195,60 +195,54 @@ import { profile } from "../data/profile";
     }
 
     .project-header {
-      margin-bottom: 28px;
-      padding-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 2px solid #f97316;
     }
 
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .project-company-badge {
-      font-size: 11px;
+    .project-company {
+      font-size: 14px;
       font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 3px;
-      background: #f97316;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      color: #111111;
     }
 
-    .project-period {
-      font-size: 12px;
-      color: #888888;
+    .project-service-sep {
+      color: #f97316;
+      font-weight: 400;
+    }
+
+    .project-service {
+      font-size: 13px;
+      color: #555555;
+      font-weight: 500;
     }
 
     .project-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: #111111;
-      margin-bottom: 6px;
+      margin-bottom: 20px;
       letter-spacing: -0.3px;
     }
 
-    .project-subtitle {
-      font-size: 13px;
-      color: #555555;
-    }
-
     .project-section {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .project-section-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #f97316;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 10px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #fed7aa;
+    .project-section-label {
+      display: inline-flex;
+      align-items: center;
+      background: #fff7ed;
+      color: #ea580c;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid #fdba74;
+      margin-bottom: 8px;
     }
 
     .project-content ul {
@@ -259,7 +253,7 @@ import { profile } from "../data/profile";
     .project-content ul li {
       padding-left: 16px;
       position: relative;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-size: 12.5px;
       max-width: 65ch;
       line-height: 1.7;
@@ -274,6 +268,61 @@ import { profile } from "../data/profile";
       height: 6px;
       border-radius: 50%;
       background: #f97316;
+    }
+
+    .sub-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 2px;
+      margin-left: 8px;
+    }
+
+    .sub-list > li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+      font-size: 12.5px;
+      max-width: 60ch;
+      line-height: 1.7;
+    }
+
+    .sub-list > li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 1.5px;
+      background: #aaaaaa;
+    }
+
+    .sub-sub-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 2px;
+      margin-left: 8px;
+    }
+
+    .sub-sub-list > li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #555555;
+      max-width: 58ch;
+      line-height: 1.7;
+    }
+
+    .sub-sub-list > li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      border: 1px solid #aaaaaa;
+      background: transparent;
     }
 
     .edu-item {
