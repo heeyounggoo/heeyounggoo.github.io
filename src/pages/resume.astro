@@ -415,6 +415,11 @@ import { profile } from "../data/profile";
       color: #cccccc;
     }
 
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
     @media print {
       body {
         background: white;
@@ -423,6 +428,11 @@ import { profile } from "../data/profile";
         margin: 0;
         box-shadow: none;
         page-break-after: always;
+      }
+      header,
+      footer,
+      #pdf-btn {
+        display: none !important;
       }
     }
   </style>
@@ -898,4 +908,44 @@ import { profile } from "../data/profile";
 
 <span class="page-num">5 / 5</span>
   </div>
+
+<button
+  id="pdf-btn"
+  onclick="window.print()"
+  title="PDF로 저장"
+  style="
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 50;
+    width: 48px;
+    height: 48px;
+    background: #F97316;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  "
+  onmouseover="this.style.background='#ea580c'; this.style.transform='scale(1.08)'"
+  onmouseout="this.style.background='#F97316'; this.style.transform='scale(1)'"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+</button>
+
+<style is:global>
+  @media (max-width: 768px) {
+    #pdf-btn {
+      display: none !important;
+    }
+  }
+</style>
 </BaseLayout>
