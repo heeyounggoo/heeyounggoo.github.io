@@ -491,7 +491,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">1 / 6</span>
+<span class="page-num">1 / 5</span>
   </div>
 
   <!-- PAGE A-2: 라이드 프론트엔드 개발 환경 설계 -->
@@ -566,7 +566,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">2 / 6</span>
+<span class="page-num">2 / 5</span>
   </div>
 
   <!-- PAGE A-3: 라이드 디자인시스템 -->
@@ -640,7 +640,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">3 / 6</span>
+<span class="page-num">3 / 5</span>
   </div>
 
   <!-- PAGE A-4: 핏투게더 스포츠 선수 리포트 -->
@@ -654,21 +654,23 @@ import { profile } from "../data/profile";
     <div class="project-title">스포츠 선수 리포트 서비스 개발</div>
 
     <div class="tech-tags">
-      <span class="tech-tag">React</span>
-      <span class="tech-tag">TypeScript</span>
-      <span class="tech-tag">Recharts</span>
-      <span class="tech-tag">Recoil</span>
-      <span class="tech-tag">React Query</span>
-      <span class="tech-tag">html2canvas</span>
+      <span class="tech-tag">Vue.js</span>
+      <span class="tech-tag">Vuex</span>
+      <span class="tech-tag">Vue Router</span>
+      <span class="tech-tag">D3.js</span>
+      <span class="tech-tag">i18n</span>
+      <span class="tech-tag">webpack</span>
     </div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
       <div class="project-content">
         <ul>
-          <li>선수별 퍼포먼스 지표 데이터 시각화 대시보드 개발</li>
-          <li>코치·구단 관계자를 위한 분석 리포트 생성 및 공유 시스템</li>
-          <li>복잡한 차트/그래프 UI 컴포넌트 개발</li>
+          <li>초기 로드 시간이 길어 사용성 저하 발생</li>
+          <li>공통 컴포넌트 중복 및 파편화로 인한 코드 품질 저하와 개발 생산성 하락</li>
+          <li>과도한 props-drilling으로 컴포넌트 간 의존성 증가</li>
+          <li>다국어 관리 방안 미흡으로 커뮤니케이션 비용 발생</li>
+          <li>차트 라이브러리 용량 문제 및 커스터마이징 한계로 인한 UI 구현 어려움</li>
         </ul>
       </div>
     </div>
@@ -677,65 +679,63 @@ import { profile } from "../data/profile";
       <span class="project-section-label">작업 상세</span>
       <div class="project-content">
         <ul>
-          <li>Recharts 기반 커스텀 차트 컴포넌트 개발 (레이더, 바, 라인 차트)</li>
-          <li>PDF 리포트 생성 기능 구현 (html2canvas + jsPDF)</li>
-          <li>선수 비교 분석 UI/UX 설계 및 개발</li>
-          <li>데이터 필터링 및 기간별 조회 기능 구현</li>
-          <li>반응형 대시보드 레이아웃 설계 (태블릿/데스크톱 최적화)</li>
+          <li><strong>서비스 리팩토링</strong>
+            <ul class="sub-list">
+              <li>리포트 데이터 관리 방식 리팩토링
+                <ul class="sub-sub-list">
+                  <li>[1차] props-drilling 방지를 위해 Vuex에 데이터 관리</li>
+                  <li>[2차] 전역 데이터 관리가 부적절하다 판단하여 동적 store 방식 적용</li>
+                </ul>
+              </li>
+              <li>ROLE 기반 Vue Router 가드닝 적용으로 역할별 메뉴 접근 제어</li>
+              <li>런타임 동적 라우터 등록으로 초기 로드 용량 경량화
+                <ul class="sub-sub-list">
+                  <li>dynamic import 사용 시에도 선언된 라우터는 일괄 등록됨을 확인, 사용자 권한에 맞게 동적 등록하도록 변경</li>
+                </ul>
+              </li>
+              <li>husky + lint-staged 적용하여 코드 컨벤션 유지</li>
+              <li>D3.js를 이용하여 Column, Line, Negative Chart 개발</li>
+            </ul>
+          </li>
+          <li><strong>성능 개선</strong>
+            <ul class="sub-list">
+              <li>Lazy Loading, Prefetch 적용으로 초기 로드 용량 개선</li>
+              <li>Webpack Bundle Analyzer로 최적화 필요 라이브러리 분석
+                <ul class="sub-sub-list">
+                  <li>tree-shaking을 지원하지 않는 moment, lodash를 date-fns, lodash-es로 대체</li>
+                </ul>
+              </li>
+              <li>TerserPlugin 적용하여 코드 경량화</li>
+              <li>webpack splitChunks 옵션 설정 테스트</li>
+            </ul>
+          </li>
+          <li><strong>다국어 지원</strong>
+            <ul class="sub-list">
+              <li>하드코딩된 번역 데이터에 i18n 적용하여 변수화, 관리 주체를 비즈니스팀으로 변경</li>
+              <li>Google Sheets API 활용하여 빌드 시 번역 데이터 자동 JSON 변환</li>
+              <li>사용자 언어 설정값만 호출하여 초기 로드 최적화</li>
+            </ul>
+          </li>
         </ul>
       </div>
-    </div>
-
-<span class="page-num">4 / 6</span>
-  </div>
-
-  <!-- PAGE A-5: 핏투게더 리포트 & ANTLabs -->
-  <div class="page">
-    <div class="project-header">
-      <span class="project-company">핏투게더</span>
-      <span class="project-service-sep">·</span>
-      <span class="project-service">리포트 서비스 고도화</span>
-    </div>
-
-    <div class="project-title">리포트 서비스 개발 & ANTLabs 연계</div>
-
-    <div class="tech-tags">
-      <span class="tech-tag">React</span>
-      <span class="tech-tag">TypeScript</span>
-      <span class="tech-tag">React Query</span>
-      <span class="tech-tag">react-window</span>
-      <span class="tech-tag">SheetJS</span>
-      <span class="tech-tag">Ant Design</span>
     </div>
 
     <div class="project-section">
-      <span class="project-section-label">배경</span>
+      <span class="project-section-label">인사이트</span>
       <div class="project-content">
         <ul>
-          <li>기존 리포트 서비스 성능 개선 및 신규 분석 기능 추가</li>
-          <li>ANTLabs 학사 데이터 연동 API 프론트엔드 통합</li>
-          <li>대용량 데이터 처리를 위한 가상화(virtualization) 기법 도입</li>
+          <li>성능 개선 — DOMContentLoaded, Load 속도 10% 감소, 빌드 용량 20% 감소</li>
+          <li>다국어 시스템 관리 자동화로 커뮤니케이션 비용 감소 및 편의성 향상</li>
+          <li>사용성 개선을 위한 디자인 패턴 구현으로 프론트엔드 아키텍처 이해도 향상</li>
+          <li>동적 store 패턴 도입 경험을 통해 상황에 맞는 상태관리 전략 수립 능력 강화</li>
         </ul>
       </div>
     </div>
 
-    <div class="project-section">
-      <span class="project-section-label">작업 상세</span>
-      <div class="project-content">
-        <ul>
-          <li>react-window 적용으로 대형 데이터 테이블 렌더링 성능 60% 개선</li>
-          <li>ANTLabs API 연동 및 데이터 정규화 레이어 구현</li>
-          <li>멀티 테넌트 권한 관리 UI (역할별 메뉴·기능 노출 제어)</li>
-          <li>엑셀/CSV 내보내기 기능 구현 (SheetJS)</li>
-          <li>인터랙티브 필터 패널 및 실시간 검색 기능 개발</li>
-        </ul>
-      </div>
-    </div>
-
-<span class="page-num">5 / 6</span>
+<span class="page-num">4 / 5</span>
   </div>
 
-  <!-- PAGE A-6: ANTLabs 학사시스템 -->
+  <!-- PAGE A-5: ANTLabs 학사시스템 -->
   <div class="page">
     <div class="project-header">
       <span class="project-company">ANTLabs</span>
@@ -746,22 +746,18 @@ import { profile } from "../data/profile";
     <div class="project-title">대학교 학사 시스템 개발</div>
 
     <div class="tech-tags">
-      <span class="tech-tag">React</span>
-      <span class="tech-tag">TypeScript</span>
-      <span class="tech-tag">Next.js</span>
-      <span class="tech-tag">Nx (모노레포)</span>
-      <span class="tech-tag">WebSocket</span>
-      <span class="tech-tag">Playwright</span>
-      <span class="tech-tag">Tailwind CSS</span>
+      <span class="tech-tag">Vue.js</span>
+      <span class="tech-tag">SCSS</span>
+      <span class="tech-tag">D3.js</span>
     </div>
 
     <div class="project-section">
       <span class="project-section-label">배경</span>
       <div class="project-content">
         <ul>
-          <li>대학교 학생·교수·행정 포털 통합 프론트엔드 개발</li>
-          <li>수강신청, 성적 입력/조회, 졸업 심사 등 핵심 기능 구현</li>
-          <li>레거시 JSP 시스템을 React + TypeScript로 현대화</li>
+          <li>기존 레거시 학사/교원 시스템의 복잡성과 비효율성 개선 필요</li>
+          <li>노후화된 UI와 레거시 시스템으로 인해 전반적인 사용성 저하</li>
+          <li>시스템 복잡성 대비 낮은 개발 생산성과 사용자 만족도로 전면적인 개선 필요</li>
         </ul>
       </div>
     </div>
@@ -770,15 +766,25 @@ import { profile } from "../data/profile";
       <span class="project-section-label">작업 상세</span>
       <div class="project-content">
         <ul>
-          <li>수강신청 동시성 처리 UI (실시간 잔여석 업데이트 WebSocket)</li>
-          <li>복잡한 졸업심사 워크플로우 스텝 UI 컴포넌트 설계</li>
-          <li>성적 입력 벌크 처리 UI (엑셀 붙여넣기, 검증, 일괄 저장)</li>
-          <li>모노레포 구조(Nx) 도입으로 학생/교수/관리자 포털 공통화</li>
-          <li>E2E 테스트 도입 (Playwright) 및 QA 자동화 파이프라인 구축</li>
+          <li>Flex 기반 레거시를 SPA 구조로 전환</li>
+          <li>교원 시스템 강의 시간표 개발 및 교원 기능 개발</li>
+          <li>공통 컴포넌트 개발 (Editor, FileUploader, TimeTable)</li>
+          <li>DataTable 키보드 이벤트 기능 지원</li>
+          <li>도서관 관리 게시판 기능 개발</li>
         </ul>
       </div>
     </div>
 
-<span class="page-num">6 / 6</span>
+    <div class="project-section">
+      <span class="project-section-label">인사이트</span>
+      <div class="project-content">
+        <ul>
+          <li>사용자 경험 개선, 서비스 복잡도 감소, 유지보수성 향상</li>
+          <li>공통 컴포넌트 모듈화를 통해 재사용성과 유지보수성 향상 경험</li>
+        </ul>
+      </div>
+    </div>
+
+<span class="page-num">5 / 5</span>
   </div>
 </BaseLayout>
