@@ -254,13 +254,19 @@ import { profile } from "../data/profile";
     }
 
     .category-item {
-      padding-left: 10px !important;
-      border-left: 2px solid #f97316;
+      padding-left: 0 !important;
       margin-top: 10px !important;
     }
 
     .category-item::before {
       display: none !important;
+    }
+
+    .category-item > strong {
+      display: block;
+      border-left: 2px solid #f97316;
+      padding-left: 10px;
+      margin-bottom: 2px;
     }
 
     .project-title {
@@ -542,11 +548,14 @@ import { profile } from "../data/profile";
   <div class="page">
     <div class="project-header">
       <span class="project-company">라이드</span>
-      <span class="project-service-sep">·</span>
-      <span class="project-service">모빌리티 서비스 개발</span>
     </div>
 
     <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">서비스</span>
+        <span class="meta-value">모빌리티 서비스 개발</span>
+      </div>
+      <span class="meta-sep">|</span>
       <div class="meta-item">
         <span class="meta-label">기간</span>
         <span class="meta-value">2023.10 - 현재</span>
@@ -629,11 +638,14 @@ import { profile } from "../data/profile";
   <div class="page">
     <div class="project-header">
       <span class="project-company">라이드</span>
-      <span class="project-service-sep">·</span>
-      <span class="project-service">디자인시스템</span>
     </div>
 
     <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">서비스</span>
+        <span class="meta-value">디자인시스템</span>
+      </div>
+      <span class="meta-sep">|</span>
       <div class="meta-item">
         <span class="meta-label">기간</span>
         <span class="meta-value">2023.10 - 현재</span>
@@ -715,11 +727,14 @@ import { profile } from "../data/profile";
   <div class="page">
     <div class="project-header">
       <span class="project-company">핏투게더</span>
-      <span class="project-service-sep">·</span>
-      <span class="project-service">스포츠 선수 리포트 서비스</span>
     </div>
 
     <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">서비스</span>
+        <span class="meta-value">스포츠 선수 리포트 서비스</span>
+      </div>
+      <span class="meta-sep">|</span>
       <div class="meta-item">
         <span class="meta-label">기간</span>
         <span class="meta-value">2021.08 - 2023.08</span>
@@ -819,11 +834,14 @@ import { profile } from "../data/profile";
   <div class="page">
     <div class="project-header">
       <span class="project-company">ANTLabs</span>
-      <span class="project-service-sep">·</span>
-      <span class="project-service">대학교 학사 시스템</span>
     </div>
 
     <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">서비스</span>
+        <span class="meta-value">대학교 학사 시스템</span>
+      </div>
+      <span class="meta-sep">|</span>
       <div class="meta-item">
         <span class="meta-label">기간</span>
         <span class="meta-value">2019.03 - 2021.07</span>
