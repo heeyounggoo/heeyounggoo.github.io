@@ -416,13 +416,19 @@ import { profile } from "../data/profile";
     }
 
     @page {
-      size: A4;
+      size: auto;
       margin: 0;
     }
 
     @media print {
+      html,
       body {
         background: white;
+      }
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
       }
       .page {
         margin: 0;
@@ -552,7 +558,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">1 / 5</span>
+<span class="page-num">1 / 6</span>
   </div>
 
   <!-- PAGE A-2: 라이드 프론트엔드 개발 환경 설계 -->
@@ -642,7 +648,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">2 / 5</span>
+<span class="page-num">2 / 6</span>
   </div>
 
   <!-- PAGE A-3: 라이드 디자인시스템 -->
@@ -731,7 +737,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">3 / 5</span>
+<span class="page-num">3 / 6</span>
   </div>
 
   <!-- PAGE A-4: 핏투게더 스포츠 선수 리포트 -->
@@ -815,6 +821,18 @@ import { profile } from "../data/profile";
               <li>webpack splitChunks 옵션 설정 테스트</li>
             </ul>
           </li>
+        </ul>
+      </div>
+    </div>
+
+<span class="page-num">4 / 6</span>
+  </div>
+
+  <!-- PAGE A-4b: 핏투게더 (계속) -->
+  <div class="page">
+    <div class="project-section">
+      <div class="project-content">
+        <ul>
           <li class="category-item"><strong>다국어 지원</strong>
             <ul class="sub-list">
               <li>하드코딩된 번역 데이터에 i18n 적용하여 변수화, 관리 주체를 비즈니스팀으로 변경</li>
@@ -838,7 +856,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">4 / 5</span>
+<span class="page-num">5 / 6</span>
   </div>
 
   <!-- PAGE A-5: ANTLabs 학사시스템 -->
@@ -906,7 +924,7 @@ import { profile } from "../data/profile";
       </div>
     </div>
 
-<span class="page-num">5 / 5</span>
+<span class="page-num">6 / 6</span>
   </div>
 
 <button
