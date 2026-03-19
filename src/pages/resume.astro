@@ -205,12 +205,26 @@ import { profile } from "../data/profile";
     }
 
     .project-header {
+      padding-bottom: 14px;
+      border-bottom: 2px solid #f97316;
+      margin-bottom: 14px;
+    }
+
+    .project-header-top {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 8px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #f97316;
+    }
+
+    .company-summary {
+      font-size: 12.5px;
+      color: #555555;
+      border-left: 3px solid #f97316;
+      padding-left: 10px;
+      margin: 0;
+      font-style: italic;
+      line-height: 1.6;
     }
 
     .project-company {
@@ -234,8 +248,7 @@ import { profile } from "../data/profile";
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 14px;
-      padding: 6px 0;
+      padding-top: 12px;
     }
 
     .meta-item {
@@ -582,9 +595,11 @@ import { profile } from "../data/profile";
   <!-- PAGE A-2: 라이드 프론트엔드 개발 환경 설계 -->
   <div class="page">
     <div class="project-header">
-      <span class="project-company">라이드</span>
-    </div>
-
+      <div class="project-header-top">
+        <span class="project-company">라이드</span>
+      </div>
+      <p class="company-summary">아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지</p>
+    
     <div class="project-meta">
       <div class="meta-item">
         <span class="meta-label">서비스</span>
@@ -601,6 +616,8 @@ import { profile } from "../data/profile";
         <span class="meta-value">80%</span>
       </div>
     </div>
+    </div>
+
 
     <div class="project-title">프론트엔드 개발 환경 설계</div>
 
@@ -668,9 +685,10 @@ import { profile } from "../data/profile";
   <!-- PAGE A-3: 라이드 디자인시스템 -->
   <div class="page">
     <div class="project-header">
-      <span class="project-company">라이드</span>
-    </div>
-
+      <div class="project-header-top">
+        <span class="project-company">라이드</span>
+      </div>
+      <p class="company-summary">디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험</p>
     <div class="project-meta">
       <div class="meta-item">
         <span class="meta-label">서비스</span>
@@ -687,6 +705,8 @@ import { profile } from "../data/profile";
         <span class="meta-value">40%</span>
       </div>
     </div>
+    </div>
+
 
     <div class="project-title">디자인시스템 구축</div>
 
@@ -763,9 +783,10 @@ import { profile } from "../data/profile";
   <!-- PAGE A-4: 핏투게더 스포츠 선수 리포트 -->
   <div class="page">
     <div class="project-header">
-      <span class="project-company">핏투게더</span>
-    </div>
-
+      <div class="project-header-top">
+        <span class="project-company">핏투게더</span>
+      </div>
+      <p class="company-summary">성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험</p>
     <div class="project-meta">
       <div class="meta-item">
         <span class="meta-label">서비스</span>
@@ -782,6 +803,8 @@ import { profile } from "../data/profile";
         <span class="meta-value">60%</span>
       </div>
     </div>
+    </div>
+
 
     <div class="project-title">스포츠 선수 리포트 서비스 개발</div>
 
@@ -881,9 +904,10 @@ import { profile } from "../data/profile";
   <!-- PAGE A-5: ANTLabs 학사시스템 -->
   <div class="page">
     <div class="project-header">
-      <span class="project-company">ANTLabs</span>
-    </div>
-
+      <div class="project-header-top">
+        <span class="project-company">ANTLabs</span>
+      </div>
+      <p class="company-summary">Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험</p>
     <div class="project-meta">
       <div class="meta-item">
         <span class="meta-label">서비스</span>
@@ -900,6 +924,8 @@ import { profile } from "../data/profile";
         <span class="meta-value">40%</span>
       </div>
     </div>
+    </div>
+
 
     <div class="project-title">대학교 학사 시스템 개발</div>
 
