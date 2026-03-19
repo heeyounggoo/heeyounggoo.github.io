@@ -40,12 +40,16 @@ import { profile } from "../data/profile";
     }
 
     .header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
       margin-bottom: 28px;
       padding-bottom: 24px;
       border-bottom: 1.5px solid #f0f0f0;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
     }
 
     .header-left h1 {
@@ -62,6 +66,13 @@ import { profile } from "../data/profile";
       color: #555555;
       margin-bottom: 12px;
       font-weight: 400;
+    }
+
+    .header-bio {
+      font-size: 13.5px;
+      color: #555555;
+      line-height: 1.8;
+      white-space: pre-line;
     }
 
     .header-left .role-badge {
@@ -448,23 +459,27 @@ import { profile } from "../data/profile";
   <!-- PAGE A-1: 프로필 요약 -->
   <div class="page">
     <div class="header">
-      <div class="header-left">
-        <h1>구희영</h1>
-        <p class="tagline">DX와 UX를 동시에 고려하는 7년차 프론트엔드 개발자</p>
-        <span class="role-badge">Frontend Developer</span>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <span class="label">Email</span>
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <div class="header-top">
+        <div class="header-left">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <h1>구희영</h1>
+            <span class="role-badge">Frontend Developer</span>
+          </div>
         </div>
-        <div class="contact-item">
-          <span class="label">GitHub</span>
-          <a href={profile.github} target="_blank" rel="noopener noreferrer">
-            github.com/heeyounggoo
-          </a>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <span class="label">Email</span>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">GitHub</span>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">
+              github.com/heeyounggoo
+            </a>
+          </div>
         </div>
       </div>
+      <p class="header-bio mt-8">{profile.bio.trim()}</p>
     </div>
 
     <!-- 기술 스택 -->
