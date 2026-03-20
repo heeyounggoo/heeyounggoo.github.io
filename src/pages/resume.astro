@@ -6,7 +6,8 @@ import { profile } from "../data/profile";
 <BaseLayout title="이력서 | 구희영" description="구희영 프론트엔드 개발자 경력기술서">
   <style is:global>
     .page {
-      width: 794px;
+      width: 100%;
+      max-width: 794px;
       min-height: 1123px;
       background: #ffffff;
       margin: 24px auto;
@@ -439,6 +440,53 @@ import { profile } from "../data/profile";
       color: #cccccc;
     }
 
+    /* 반응형: 모바일/태블릿 */
+    @media (max-width: 840px) {
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 24px 20px;
+        margin: 12px auto;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .contact-grid {
+        text-align: left;
+      }
+
+      .contact-item {
+        justify-content: flex-start;
+      }
+
+      .header-left h1 {
+        font-size: 26px;
+      }
+
+      .career-item,
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .project-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .meta-sep {
+        display: none;
+      }
+
+      .page-num {
+        right: 20px;
+      }
+    }
+
     @page {
       size: auto;
       margin: 0;
@@ -457,6 +505,10 @@ import { profile } from "../data/profile";
         max-width: none !important;
       }
       .page {
+        width: 794px;
+        max-width: none;
+        min-height: 1123px;
+        padding: 48px 64px;
         margin: 0;
         box-shadow: none;
         page-break-after: always;
