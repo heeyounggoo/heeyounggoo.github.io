@@ -58,7 +58,10 @@ export const career: CareerItem[] = [
     period: "2021.08 – 2023.08",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["스포츠 선수 리포트 서비스 프론트엔드 개발", "번들 최적화(빌드 용량 20% 감소), i18n 자동화 시스템 구축"],
+    bullets: [
+      "스포츠 선수 리포트 서비스 프론트엔드 개발",
+      "번들 최적화(빌드 용량 20% 감소), i18n 자동화 시스템 구축",
+    ],
   },
   {
     company: "ANTLabs",
@@ -85,7 +88,83 @@ export const education: EducationItem[] = [
 export const projects: ProjectPage[] = [
   {
     company: "라이드",
-    companySummary: "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
+    companySummary:
+      "컴포넌트 설계 패턴과 스타일 아키텍처로 서비스 전반의 UI 일관성을 확보한 경험",
+    service: "디자인시스템",
+    period: "2023.10 - 현재",
+    contribution: "40%",
+    title: "디자인시스템 구축",
+    techs: ["React", "TypeScript", "vanilla-extract", "Storybook"],
+    background: [
+      "서비스 확장에 따라 UI 일관성 유지 어려움 및 중복 컴포넌트 증가",
+      "디자인-개발 간 커뮤니케이션 비용 증가",
+      "새로운 UI 개발 시 매번 처음부터 구현하는 비효율로 팀 전체 개발 속도 저하",
+    ],
+    detailsPageA: [
+      {
+        category: "컴포넌트 아키텍처 설계",
+        items: [
+          {
+            text: "Compound Pattern, As-Child Pattern 등 컴포넌트 특성에 맞는 설계 패턴 적용",
+            subItems: [
+              {
+                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification 등 구현",
+              },
+            ],
+          },
+          {
+            text: "Storybook을 이용한 컴포넌트 단위 개발 — 독립 환경에서 다양한 상태·변형을 시각적으로 검증",
+          },
+          {
+            text: "Storybook 기반 컴포넌트 카탈로그 제공으로 디자인-개발 간 스펙 확인 비용 절감",
+          },
+        ],
+      },
+      {
+        category: "CSS Layer 기반 스타일 격리 전략",
+        items: [
+          {
+            text: "CSS Layer (@layer) 활용하여 스타일 충돌 없는 컴포넌트 제공",
+            subItems: [
+              {
+                text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
+              },
+              {
+                text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 정의",
+              },
+            ],
+          },
+          {
+            text: "Design Token을 vanilla-extract Theme, Vars로 구조화하여 서비스 간 일관된 시각 언어 제공",
+          },
+        ],
+      },
+      {
+        category: "패키지 운영 및 배포",
+        items: [
+          {
+            text: "npm private package로 버전 제어 — 점진적 마이그레이션 지원으로 레거시·신규 코드 동시 대응",
+          },
+          {
+            text: "전용 빌드 스크립트로 수백 개 SVG → React 컴포넌트 자동 변환, Tree-shaking 지원",
+          },
+          {
+            text: "빌드·배포·릴리즈 문서 생성까지 CI/CD 자동화",
+          },
+        ],
+      },
+    ],
+    results: [
+      "공통 컴포넌트 활용으로 신규 화면 개발 시간 단축, 팀 전체 생산성 향상",
+      "토큰 기반 디자인 시스템으로 서비스 간 일관된 UX 제공",
+      "Storybook 기반 컴포넌트 문서화로 디자인-개발 간 커뮤니케이션 비용 절감",
+    ],
+    pageNum: "2 / 6",
+  },
+  {
+    company: "라이드",
+    companySummary:
+      "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
     service: "모빌리티 서비스 개발",
     period: "2023.10 - 현재",
     contribution: "80%",
@@ -125,106 +204,17 @@ export const projects: ProjectPage[] = [
           },
         ],
       },
-      {
-        category: "AI 기반 개발 프로세스 자동화",
-        items: [
-          {
-            text: "프론트엔드 코딩 컨벤션 및 아키텍처 의사결정을 AI Rules로 정의하여 팀 내 코드 일관성 확보",
-          },
-          {
-            text: "Issue 분석 → 브랜치 생성 → PR 생성까지의 워크플로우를 AI Skill로 자동화하여 팀 차원에 공유",
-          },
-          {
-            text: "E2E 테스트 코드 자동 생성 Skill 제공으로 테스트 커버리지 확보, 테스트 코드 작성 효율화",
-          },
-        ],
-      },
     ],
     results: [
       "프론트엔드 모노레포로 도입, 개별 서비스 배포 지원으로 리소스 절감",
       "공통 패키지 분리로 코드 중복 제거 및 일관성 확보",
     ],
-    pageNum: "2 / 6",
-  },
-  {
-    company: "라이드",
-    companySummary: "디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험",
-    service: "디자인시스템",
-    period: "2023.10 - 현재",
-    contribution: "40%",
-    title: "디자인시스템 구축",
-    techs: ["React", "vanilla-extract", "Storybook"],
-    background: [
-      "서비스 확장에 따라 UI 일관성 유지 어려움 및 중복 컴포넌트 증가",
-      "디자인-개발 간 커뮤니케이션 비용 증가",
-      "새로운 UI 개발 시 매번 처음부터 구현하는 비효율로 팀 전체 개발 속도 저하",
-    ],
-    detailsPageA: [
-      {
-        category: "패키지 배포 및 최적화 전략",
-        items: [
-          {
-            text: "Private Package 운영 — npm private package 관리하여 버전 제어 및 재사용성 극대화",
-          },
-          {
-            text: "Build Optimization",
-            subItems: [
-              {
-                text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
-              },
-              { text: "Tree-shaking 지원하여 번들 사이즈 최적화" },
-            ],
-          },
-        ],
-      },
-      {
-        category: "유연하고 견고한 컴포넌트 아키텍처 설계",
-        items: [
-          {
-            text: "CSS Layer (@layer) 활용",
-            subItems: [
-              {
-                text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
-              },
-              {
-                text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
-              },
-            ],
-          },
-          {
-            text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
-          },
-          {
-            text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
-          },
-          { text: "Storybook을 이용하여 컴포넌트 단위 개발" },
-        ],
-      },
-      {
-        category: "팀 생산성을 위한 시스템 설계",
-        items: [
-          {
-            text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화로 수동 작업 제거",
-          },
-          {
-            text: "패키지 버전관리를 통해 점진적 마이그레이션 지원 — 레거시 코드와 신규 코드 동시 대응",
-          },
-          {
-            text: "Storybook 기반 컴포넌트 카탈로그 제공으로 디자인-개발 간 스펙 확인 비용 절감",
-          },
-        ],
-      },
-    ],
-    results: [
-      "Storybook 기반 컴포넌트 문서화로 디자인-개발 간 커뮤니케이션 비용 절감",
-      "공통 컴포넌트 활용으로 신규 화면 개발 시간 단축, 팀 전체 생산성 향상",
-      "토큰 기반 디자인 시스템으로 서비스 간 일관된 UX 제공",
-    ],
     pageNum: "3 / 6",
   },
   {
     company: "핏투게더",
-    companySummary: "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
+    companySummary:
+      "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
     service: "스포츠 선수 리포트 서비스",
     period: "2021.08 - 2023.08",
     contribution: "60%",
@@ -308,7 +298,8 @@ export const projects: ProjectPage[] = [
   },
   {
     company: "ANTLabs",
-    companySummary: "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
+    companySummary:
+      "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
     service: "대학교 학사 시스템",
     period: "2019.03 - 2021.07",
     contribution: "40%",
