@@ -208,7 +208,7 @@ import { career, education, projects } from "../data/resumeData";
     .project-header {
       padding-bottom: 14px;
       border-bottom: 2px solid #f97316;
-      margin-bottom: 14px;
+      margin-bottom: 24px;
     }
 
     .project-header-top {
@@ -220,18 +220,16 @@ import { career, education, projects } from "../data/resumeData";
 
     .company-summary {
       font-size: 12.5px;
-      color: #555555;
-      border-left: 3px solid #f97316;
-      padding-left: 10px;
-      margin: 0;
-      font-style: italic;
+      color: #888888;
+      margin: 4px 0 0;
       line-height: 1.6;
     }
 
     .project-company {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       color: #111111;
+      letter-spacing: -0.5px;
     }
 
     .project-service-sep {
@@ -574,7 +572,7 @@ import { career, education, projects } from "../data/resumeData";
       }
     </div>
 
-    <span class="page-num">1 / 5</span>
+    <span class="page-num">1 / 6</span>
   </div>
 
   {
@@ -586,11 +584,6 @@ import { career, education, projects } from "../data/resumeData";
           </div>
           <p class="company-summary">{proj.companySummary}</p>
           <div class="project-meta">
-            <div class="meta-item">
-              <span class="meta-label">서비스</span>
-              <span class="meta-value">{proj.service}</span>
-            </div>
-            <span class="meta-sep">|</span>
             <div class="meta-item">
               <span class="meta-label">기간</span>
               <span class="meta-value">{proj.period}</span>

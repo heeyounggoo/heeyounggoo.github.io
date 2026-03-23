@@ -37,7 +37,6 @@ export interface ProjectSection {
 export interface ProjectPage {
   company: string;
   companySummary: string;
-  service: string;
   period: string;
   contribution: string;
   sections: ProjectSection[];
@@ -150,8 +149,19 @@ export const projects: ProjectPage[] = [
           "프론트/백엔드 동일 로직 사용으로 정합성 확보, 코드 관리 포인트 최소화",
         ],
       },
+    ],
+    pageNum: "2 / 6",
+  },
+  {
+    company: "라이드",
+    companySummary:
+      "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
+    service: "모빌리티 서비스 개발",
+    period: "2023.10 - 현재",
+    contribution: "40%",
+    sections: [
       {
-        title: "어드민, 고객 서비스",
+        title: "모빌리티 서비스 개발",
         background: [
           "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
         ],
@@ -199,18 +209,17 @@ export const projects: ProjectPage[] = [
         ],
       },
     ],
-    pageNum: "2 / 5",
+    pageNum: "3 / 6",
   },
   {
     company: "라이드",
     companySummary:
       "디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험",
-    service: "디자인시스템",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
       {
-        title: "디자인시스템 구축",
+        title: "디자인시스템",
         techs: ["React", "vanilla-extract", "Storybook"],
         background: [
           "서비스 확장에 따라 UI 일관성 유지 어려움, 중복 컴포넌트 증가",
@@ -289,13 +298,12 @@ export const projects: ProjectPage[] = [
         ],
       },
     ],
-    pageNum: "3 / 5",
+    pageNum: "4 / 6",
   },
   {
     company: "핏투게더",
     companySummary:
       "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
-    service: "스포츠 선수 리포트 서비스",
     period: "2021.08 - 2023.08",
     contribution: "60%",
     sections: [
@@ -369,13 +377,12 @@ export const projects: ProjectPage[] = [
         ],
       },
     ],
-    pageNum: "4 / 5",
+    pageNum: "5 / 6",
   },
   {
     company: "ANTLabs",
     companySummary:
       "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
-    service: "대학교 학사 시스템",
     period: "2019.03 - 2021.07",
     contribution: "40%",
     sections: [
@@ -400,6 +407,6 @@ export const projects: ProjectPage[] = [
         results: ["사용자 경험 개선, 유지보수성 향상"],
       },
     ],
-    pageNum: "5 / 5",
+    pageNum: "6 / 6",
   },
 ];
