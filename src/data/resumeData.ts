@@ -145,8 +145,9 @@ export const projects: ProjectPage[] = [
           },
         ],
         results: [
-          "CI/CD 효율화로 배포 리소스 절감, 신규 개발자 온보딩 시간 단축",
-          "프론트/백엔드 동일 로직 사용으로 정합성 확보, 코드 관리 포인트 최소화",
+          "Turborepo 캐싱 적용으로 CI 빌드 시간 단축, 변경된 패키지만 배포하여 불필요한 빌드 제거",
+          "신규 개발자 온보딩 시 레포 셋업 과정 간소화",
+          "공통 모듈을 패키지로 분리하여 web/admin 간 중복 코드 제거, 수정 시 한 곳만 변경",
         ],
       },
     ],
@@ -162,6 +163,7 @@ export const projects: ProjectPage[] = [
     sections: [
       {
         title: "모빌리티 서비스 개발",
+        techs: ["React", "Next.js", "Jest"],
         background: [
           "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
         ],
@@ -293,8 +295,8 @@ export const projects: ProjectPage[] = [
           },
         ],
         results: [
-          "컴포넌트 기반 개발로 개발 속도 향상, 디자이너 소통 효율화",
-          "토큰 기반 일관된 UX 제공, SSR 환경 대응",
+          "Storybook으로 컴포넌트 상태를 시각적으로 공유하여, 디자이너와 구현 확인 커뮤니케이션 횟수 감소",
+          "토큰 기반으로 테마 변경 시 전체 서비스에 일괄 반영 가능한 구조 확보",
         ],
       },
     ],
@@ -372,8 +374,8 @@ export const projects: ProjectPage[] = [
         ],
         results: [
           "DOMContentLoaded·Load 속도 10% 감소, 빌드 용량 20% 감소",
-          "Google Sheets 기반 i18n 자동화로 번역 관리 주체를 비즈니스팀으로 이관",
-          "Vuex → 동적 store 전환으로 리포트별 독립적 상태 관리 구현, 컴포넌트 간 의존성 해소",
+          "Google Sheets 기반 i18n 자동화로 개발 생산성 향상",
+          "Vuex 전역 store에서 동적 store로 전환하여 리포트별 독립적 상태 관리 구현, 위젯 간 데이터 충돌 해소",
         ],
       },
     ],
@@ -404,7 +406,10 @@ export const projects: ProjectPage[] = [
             ],
           },
         ],
-        results: ["사용자 경험 개선, 유지보수성 향상"],
+        results: [
+          "Flex 기반 레거시를 Vue.js SPA로 전환하여 페이지 전환 속도 및 사용성 개선",
+          "Editor, FileUploader, TimeTable 등 공통 컴포넌트를 모듈화하여 교원 시스템 내 반복 개발 제거",
+        ],
       },
     ],
     pageNum: "6 / 6",
