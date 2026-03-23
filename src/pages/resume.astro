@@ -608,7 +608,7 @@ import { career, education, projects } from "../data/resumeData";
             <div class="project-title">{section.title}</div>
 
             <div class="tech-tags">
-              {section.techs.map((tech) => (
+              {section.techs?.map((tech) => (
                 <span class="tech-tag">{tech}</span>
               ))}
             </div>

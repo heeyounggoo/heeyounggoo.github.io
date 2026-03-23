@@ -28,7 +28,7 @@ export interface DetailCategory {
 
 export interface ProjectSection {
   title: string;
-  techs: string[];
+  techs?: string[];
   background: string[];
   details: DetailCategory[];
   results: string[];
@@ -94,7 +94,7 @@ export const projects: ProjectPage[] = [
       "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
     service: "모빌리티 서비스 개발",
     period: "2023.10 - 현재",
-    contribution: "80%",
+    contribution: "40%",
     sections: [
       {
         title: "프론트엔드 개발 환경 설계",
@@ -108,6 +108,14 @@ export const projects: ProjectPage[] = [
             items: [
               {
                 text: "<strong>Turborepo + pnpm 모노레포 도입 제안</strong> — 프론트엔드 개발 환경 통합",
+                subItems: [
+                  {
+                    text: "pnpm catalog를 통한 의존성 최적화 및 버전 일관성 유지",
+                  },
+                  {
+                    text: "CI/CD 효율화 — Turborepo 활용하여 개별 패키지만 빌드/배포 지원",
+                  },
+                ]
               },
               {
                 text: "<strong>서비스 특성에 따른 프레임워크 분리 의사결정</strong>",
@@ -121,13 +129,15 @@ export const projects: ProjectPage[] = [
                 ],
               },
               {
-                text: "CI/CD 효율화 — Turborepo 캐싱으로 변경된 패키지만 빌드/배포",
-              },
-              {
-                text: "<strong>git submodule → npm private package 전환</strong> — semantic versioning 도입, 개발 환경 셋업 복잡도 감소",
-              },
-              {
-                text: "Vite 기반 공통 모듈 패키지 구축 (CJS/ESM 동시 지원)",
+                text: "<strong>git submodule → npm private package 전환</strong>",
+                subItems: [
+                  {
+                    text: "Vite 기반 공통 모듈 패키지 구축 (CJS/ESM 동시 지원)"
+                  },
+                  {
+                    text: "semantic versioning 도입, 개발 환경 셋업 복잡도 감소"
+                  },
+                ]
               },
               {
                 text: "zod를 이용한 API 요청/응답값 type 검증",
@@ -141,65 +151,51 @@ export const projects: ProjectPage[] = [
         ],
       },
       {
-        title: "서비스 핵심 도메인 개발",
-        techs: [
-          "Next.js",
-          "TypeScript",
-          "Zustand",
-          "react-query",
-          "Next-Auth",
-          "Jest",
-        ],
+        title: "어드민, 고객 서비스",
         background: [
-          "자동차 계약 과정이 오프라인 기반, 디지털 전환 필요",
-          "어드민 권한 체계 미정의로 접근 제어 불완전",
+          "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
         ],
         details: [
           {
             category: "온라인 계약 도메인",
             items: [
               {
-                text: "자동차 온라인 계약 프로세스 디지털 전환 기능 개발",
+                text: "자동차 온라인 계약 기능 개발(차량 계약부터 인도까지 전 과정)",
               },
               {
-                text: "계약 데이터 선형 의존 관계 분석 → 기획팀에 정책 보완 제안",
+                text: "<strong>계약 데이터 간 의존 관계를 파악하여 기획팀에 정책 보완 제안</strong>",
                 subItems: [
                   {
-                    text: "고객 인도 안내 발송 후 계약서 재발송 제한 → 데이터 정합성 확보",
+                    text: "예: 인도 안내 발송 후 계약서 재발송 제한 등 역방향 제약 조건 정의 → 데이터 정합성 확보",
                   },
                 ],
               },
-              { text: "계약서 서명 기능 개발" },
-            ],
-          },
-          {
-            category: "어드민 권한 체계",
-            items: [
-              {
-                text: "RBAC 수립, Middleware 접근 제어, Next-Auth 세션 관리",
-              },
-              {
-                text: "accessToken/refreshToken 갱신 플로우 정의 및 구현",
-              },
-              { text: "관리자 권한 확인 custom hook 제공" },
+              { text: "계약서 서명 기능" },
+              { text: "인수금 PG(Toss Payment) 결제 / 어드민 수납 기능" },
+              { text: "서명, 인수증 작성 등 funnel 뒤로가기 대응" },
+              { text: "서류 다운로드/업로드 기능"}
             ],
           },
           {
             category: "공통 비즈니스 로직",
             items: [
               {
-                text: "차량 옵션 가격 산출 — Set, Map, 그래프 자료구조 활용, Polyfill 별도 구현",
+                text: "차량 옵션 선택 및 가격 최적화 기능 구현",
+                subItems: [
+                  {
+                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용,  Polyfill 별도 구현"
+                  }
+                ]
               },
               {
-                text: "Jest 단위 테스트로 엣지 케이스 포함 안정성 확보",
+                text: "Jest 기반의 단위 테스트(Unit Test) 작성",
               },
             ],
           },
         ],
         results: [
-          "복잡한 계약 상태 흐름 설계로 운영 이슈 최소화",
-          "기획 단계에서 예외 케이스 사전 발굴, 정책 제안으로 팀 협업 기여",
-          "엣지 케이스 테스트로 서비스 안정성 향상",
+          "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
+          "Polyfill 구현 경험을 통해 브라우저 호환성 대응 역량 향상"
         ],
       },
     ],
