@@ -22,8 +22,16 @@ export interface SubItem {
 }
 
 export interface DetailCategory {
-  category?: string; // 없으면 flat list (ANTLabs)
+  category?: string; // 없으면 flat list
   items: SubItem[];
+}
+
+export interface ProjectSection {
+  title: string;
+  techs: string[];
+  background: string[];
+  details: DetailCategory[];
+  results: string[];
 }
 
 export interface ProjectPage {
@@ -32,14 +40,8 @@ export interface ProjectPage {
   service: string;
   period: string;
   contribution: string;
-  title: string;
-  techs: string[];
-  background: string[];
-  detailsPageA: DetailCategory[];
-  detailsPageB?: DetailCategory[]; // 핏투게더만 사용
-  results: string[];
+  sections: ProjectSection[];
   pageNum: string;
-  pageNumB?: string; // 핏투게더 A-4b
 }
 
 export const career: CareerItem[] = [
@@ -49,8 +51,9 @@ export const career: CareerItem[] = [
     duration: "재직 중",
     position: "프론트엔드 개발자",
     bullets: [
-      "모빌리티 서비스 프론트엔드 개발 (사용자 서비스, 관리자)",
-      "Turborepo 모노레포 도입, vanilla-extract 기반 디자인시스템 구축",
+      "모빌리티 서비스 프론트엔드 개발 — 온라인 계약 도메인, 어드민 권한 체계 설계",
+      "모노레포 도입 및 프론트엔드 개발 환경 설계",
+      "사내 디자인시스템 구축",
     ],
   },
   {
@@ -58,14 +61,16 @@ export const career: CareerItem[] = [
     period: "2021.08 – 2023.08",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["스포츠 선수 리포트 서비스 프론트엔드 개발", "번들 최적화(빌드 용량 20% 감소), i18n 자동화 시스템 구축"],
+    bullets: [
+      "스포츠 선수 리포트 서비스 개발 — 성능 최적화 및 다국어 시스템 구축",
+    ],
   },
   {
     company: "ANTLabs",
     period: "2019.03 – 2021.07",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["Flex 레거시 → Vue.js SPA 전환, 공통 컴포넌트 모듈화"],
+    bullets: ["대학교 학사 시스템 SPA 전환"],
   },
 ];
 
@@ -85,256 +90,248 @@ export const education: EducationItem[] = [
 export const projects: ProjectPage[] = [
   {
     company: "라이드",
-    companySummary: "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
+    companySummary:
+      "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
     service: "모빌리티 서비스 개발",
     period: "2023.10 - 현재",
     contribution: "80%",
-    title: "프론트엔드 개발 환경 설계",
-    techs: ["Turborepo", "pnpm", "React 19", "Next.js", "zod"],
-    background: [
-      "개별 레포지토리 관리로 인한 중복 기능 발생",
-      "신규 도메인 확장 시 web/admin에서 공통으로 사용되는 부분들이 많아짐에 따라 개발 생산성 고려",
-    ],
-    detailsPageA: [
+    sections: [
       {
-        category: "모노레포 아키텍처 설계",
-        items: [
+        title: "프론트엔드 개발 환경 설계",
+        techs: ["Turborepo", "pnpm", "React 19", "Next.js", "Vite"],
+        background: [
+          "개별 레포지토리 관리로 중복 기능 발생, 공통 로직 파편화",
+          "git submodule 기반 공유 코드의 버전 동기화 이슈",
+        ],
+        details: [
           {
-            text: "<strong>Turborepo</strong>와 <strong>pnpm</strong> 기반의 모노레포 도입 제안하여 프론트엔드 개발 환경 통합",
-          },
-          {
-            text: "서비스 특성에 따른 프레임워크 분리 — Admin은 SPA, Web은 SSR로 선택",
-            subItems: [
+            items: [
               {
-                text: "<strong>React 19 SPA(Admin)</strong> — 비즈니스 로직 복잡도가 높아 서버/클라이언트 경계 관리 부담을 줄이고 클라이언트 상태 관리에 집중",
+                text: "<strong>Turborepo + pnpm 모노레포 도입 제안</strong> — 프론트엔드 개발 환경 통합",
               },
               {
-                text: "<strong>Next.js SSR(Web)</strong> — 차량 구매 도메인 특성상 검색 유입이 핵심, SEO 최적화를 위해 SSR 채택",
+                text: "<strong>서비스 특성에 따른 프레임워크 분리 의사결정</strong>",
+                subItems: [
+                  {
+                    text: "React 19 (Admin): 비즈니스 로직 복잡도가 높아 CSR에 집중, react-query 기반 Optimistic Update",
+                  },
+                  {
+                    text: "Next.js (Web): 차량 구매 도메인 SEO 최적화, SSR 초기 렌더링 속도 개선",
+                  },
+                ],
+              },
+              {
+                text: "CI/CD 효율화 — Turborepo 캐싱으로 변경된 패키지만 빌드/배포",
+              },
+              {
+                text: "<strong>git submodule → npm private package 전환</strong> — semantic versioning 도입, 개발 환경 셋업 복잡도 감소",
+              },
+              {
+                text: "Vite 기반 공통 모듈 패키지 구축 (CJS/ESM 동시 지원)",
+              },
+              {
+                text: "zod를 이용한 API 요청/응답값 type 검증",
               },
             ],
           },
-          {
-            text: "<code>pnpm catalog</code>를 통한 의존성 최적화 및 버전 일관성 유지",
-          },
-          {
-            text: "CI/CD 효율화 — Turborepo의 캐싱 및 필터링 기능을 활용하여 변경된 내용만 빌드/배포",
-          },
-          { text: "zod를 이용한 API 요청/응답값 type 검증하여 안정성 확보" },
-          {
-            text: "husky + lint-staged 활용해 커밋 전 lint/type 오류 사전 검증",
-          },
+        ],
+        results: [
+          "CI/CD 효율화로 배포 리소스 절감, 신규 개발자 온보딩 시간 단축",
+          "프론트/백엔드 동일 로직 사용으로 정합성 확보, 코드 관리 포인트 최소화",
         ],
       },
       {
-        category: "AI 기반 개발 프로세스 자동화",
-        items: [
+        title: "서비스 핵심 도메인 개발",
+        techs: [
+          "Next.js",
+          "TypeScript",
+          "Zustand",
+          "react-query",
+          "Next-Auth",
+          "Jest",
+        ],
+        background: [
+          "자동차 계약 과정이 오프라인 기반, 디지털 전환 필요",
+          "어드민 권한 체계 미정의로 접근 제어 불완전",
+        ],
+        details: [
           {
-            text: "프론트엔드 코딩 컨벤션 및 아키텍처 의사결정을 AI Rules로 정의하여 팀 내 코드 일관성 확보",
+            category: "온라인 계약 도메인",
+            items: [
+              {
+                text: "자동차 온라인 계약 프로세스 디지털 전환 기능 개발",
+              },
+              {
+                text: "계약 데이터 선형 의존 관계 분석 → 기획팀에 정책 보완 제안",
+                subItems: [
+                  {
+                    text: "고객 인도 안내 발송 후 계약서 재발송 제한 → 데이터 정합성 확보",
+                  },
+                ],
+              },
+              { text: "계약서 서명 기능 개발" },
+            ],
           },
           {
-            text: "Issue 분석 → 브랜치 생성 → PR 생성까지의 워크플로우를 AI Skill로 자동화하여 팀 차원에 공유",
+            category: "어드민 권한 체계",
+            items: [
+              {
+                text: "RBAC 수립, Middleware 접근 제어, Next-Auth 세션 관리",
+              },
+              {
+                text: "accessToken/refreshToken 갱신 플로우 정의 및 구현",
+              },
+              { text: "관리자 권한 확인 custom hook 제공" },
+            ],
           },
           {
-            text: "E2E 테스트 코드 자동 생성 Skill 제공으로 테스트 커버리지 확보, 테스트 코드 작성 효율화",
+            category: "공통 비즈니스 로직",
+            items: [
+              {
+                text: "차량 옵션 가격 산출 — Set, Map, 그래프 자료구조 활용, Polyfill 별도 구현",
+              },
+              {
+                text: "Jest 단위 테스트로 엣지 케이스 포함 안정성 확보",
+              },
+            ],
           },
+        ],
+        results: [
+          "복잡한 계약 상태 흐름 설계로 운영 이슈 최소화",
+          "기획 단계에서 예외 케이스 사전 발굴, 정책 제안으로 팀 협업 기여",
+          "엣지 케이스 테스트로 서비스 안정성 향상",
         ],
       },
     ],
-    results: [
-      "프론트엔드 모노레포로 도입, 개별 서비스 배포 지원으로 리소스 절감",
-      "공통 패키지 분리로 코드 중복 제거 및 일관성 확보",
-    ],
-    pageNum: "2 / 6",
+    pageNum: "2 / 5",
   },
   {
     company: "라이드",
-    companySummary: "디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험",
+    companySummary:
+      "디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험",
     service: "디자인시스템",
     period: "2023.10 - 현재",
     contribution: "40%",
-    title: "디자인시스템 구축",
-    techs: ["React", "vanilla-extract", "Storybook"],
-    background: [
-      "서비스 확장에 따라 UI 일관성 유지 어려움 및 중복 컴포넌트 증가",
-      "디자인-개발 간 커뮤니케이션 비용 증가",
-      "새로운 UI 개발 시 매번 처음부터 구현하는 비효율로 팀 전체 개발 속도 저하",
-    ],
-    detailsPageA: [
+    sections: [
       {
-        category: "패키지 배포 및 최적화 전략",
-        items: [
+        title: "디자인시스템 구축",
+        techs: ["React", "vanilla-extract", "Storybook"],
+        background: [
+          "서비스 확장에 따라 UI 일관성 유지 어려움, 중복 컴포넌트 증가",
+          "CSR/SSR 환경에서 ThemeProvider 적용 시 깜빡임 이슈",
+        ],
+        details: [
           {
-            text: "Private Package 운영 — npm private package 관리하여 버전 제어 및 재사용성 극대화",
-          },
-          {
-            text: "Build Optimization",
-            subItems: [
+            items: [
               {
-                text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
+                text: "npm private package 버전 관리로 레거시/신규 코드 모두 대응",
               },
-              { text: "Tree-shaking 지원하여 번들 사이즈 최적화" },
+              {
+                text: "SVG → React 컴포넌트 자동 변환 빌드 스크립트, Tree-shaking 지원",
+              },
+              {
+                text: "빌드/패키지 배포/Storybook 배포/릴리즈 문서 생성 자동화",
+              },
+              {
+                text: "<strong>CSS Layer (@layer)</strong> — vanilla-extract CSS 우선순위 문제 해결, reset/global/component/page 순서 통일",
+              },
+              {
+                text: "<strong>Design Token</strong> — vanilla-extract Theme, Vars 활용",
+              },
+              {
+                text: "<strong>ThemeProvider SSR 대응</strong> — useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
+              },
+              {
+                text: "Compound Pattern, As-Child Pattern 적용",
+              },
+              { text: "Storybook 기반 컴포넌트 단위 개발" },
             ],
           },
         ],
-      },
-      {
-        category: "유연하고 견고한 컴포넌트 아키텍처 설계",
-        items: [
-          {
-            text: "CSS Layer (@layer) 활용",
-            subItems: [
-              {
-                text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
-              },
-              {
-                text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
-              },
-            ],
-          },
-          {
-            text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
-          },
-          {
-            text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
-          },
-          { text: "Storybook을 이용하여 컴포넌트 단위 개발" },
-        ],
-      },
-      {
-        category: "팀 생산성을 위한 시스템 설계",
-        items: [
-          {
-            text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화로 수동 작업 제거",
-          },
-          {
-            text: "패키지 버전관리를 통해 점진적 마이그레이션 지원 — 레거시 코드와 신규 코드 동시 대응",
-          },
-          {
-            text: "Storybook 기반 컴포넌트 카탈로그 제공으로 디자인-개발 간 스펙 확인 비용 절감",
-          },
+        results: [
+          "컴포넌트 기반 개발로 개발 속도 향상, 디자이너 소통 효율화",
+          "토큰 기반 일관된 UX 제공, SSR 환경 대응",
         ],
       },
     ],
-    results: [
-      "Storybook 기반 컴포넌트 문서화로 디자인-개발 간 커뮤니케이션 비용 절감",
-      "공통 컴포넌트 활용으로 신규 화면 개발 시간 단축, 팀 전체 생산성 향상",
-      "토큰 기반 디자인 시스템으로 서비스 간 일관된 UX 제공",
-    ],
-    pageNum: "3 / 6",
+    pageNum: "3 / 5",
   },
   {
     company: "핏투게더",
-    companySummary: "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
+    companySummary:
+      "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
     service: "스포츠 선수 리포트 서비스",
     period: "2021.08 - 2023.08",
     contribution: "60%",
-    title: "스포츠 선수 리포트 서비스 개발",
-    techs: ["Vue.js", "Vuex", "Vue Router", "D3.js", "i18n", "webpack"],
-    background: [
-      "초기 로드 시간이 길어 사용성 저하 발생",
-      "공통 컴포넌트 중복 및 파편화로 인한 코드 품질 저하와 개발 생산성 하락",
-      "과도한 props-drilling으로 컴포넌트 간 의존성 증가",
-      "다국어 관리 방안 미흡으로 커뮤니케이션 비용 발생",
-      "차트 라이브러리 용량 문제 및 커스터마이징 한계로 인한 UI 구현 어려움",
-    ],
-    detailsPageA: [
+    sections: [
       {
-        category: "서비스 리팩토링",
-        items: [
+        title: "스포츠 선수 리포트 서비스 개발",
+        techs: ["Vue.js", "Vuex", "Vue Router", "D3.js", "i18n", "webpack"],
+        background: [
+          "초기 로드 시간 길어 사용성 저하",
+          "과도한 props-drilling, 다국어 관리 미흡, 차트 커스터마이징 한계",
+        ],
+        details: [
           {
-            text: "리포트 데이터 관리 방식 리팩토링",
-            subItems: [
+            items: [
               {
-                text: "[1차] props-drilling 방지를 위해 Vuex에 데이터 관리",
+                text: "데이터 관리 2단계 리팩토링: Vuex → 동적 store 방식 (전역 관리 부적절 판단)",
               },
               {
-                text: "[2차] 리포트별 데이터가 서로 독립적이어서 전역 store가 불필요하다 판단, 동적 store 방식으로 전환하여 리포트 단위 상태 격리",
+                text: "<strong>Proxy 기반 Observer Pattern</strong> — 위젯 개별 로딩 지원",
+              },
+              {
+                text: "ROLE 기반 Vue Router 가드닝, 런타임 동적 라우터 등록으로 초기 로드 경량화",
+              },
+              {
+                text: "D3.js 기반 Column, Line, Negative Chart 직접 개발",
+              },
+              {
+                text: "Lazy Loading, Prefetch, tree-shaking 미지원 라이브러리 대체 (moment→date-fns, lodash→lodash-es)",
+              },
+              {
+                text: "i18n + Google Sheets API 연동 — 빌드 시 번역 데이터 자동 변환, 관리 주체를 비즈니스팀으로 이관",
               },
             ],
           },
-          {
-            text: "ROLE 기반 Vue Router 가드닝 적용으로 역할별 메뉴 접근 제어",
-          },
-          {
-            text: "런타임 동적 라우터 등록으로 초기 로드 용량 경량화",
-            subItems: [
-              {
-                text: "dynamic import 사용 시에도 선언된 라우터는 일괄 등록됨을 확인, 사용자 권한에 맞게 동적 등록하도록 변경",
-              },
-            ],
-          },
-          { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
-          { text: "D3.js를 이용하여 Column, Line, Negative Chart 개발" },
         ],
-      },
-      {
-        category: "성능 개선",
-        items: [
-          { text: "Lazy Loading, Prefetch 적용으로 초기 로드 용량 개선" },
-          {
-            text: "Webpack Bundle Analyzer로 최적화 필요 라이브러리 분석",
-            subItems: [
-              {
-                text: "tree-shaking을 지원하지 않는 moment, lodash를 date-fns, lodash-es로 대체",
-              },
-            ],
-          },
-          { text: "TerserPlugin 적용하여 코드 경량화" },
-          { text: "webpack splitChunks 옵션 설정 테스트" },
+        results: [
+          "DOMContentLoaded, Load 속도 10% 감소, 빌드 용량 20% 감소",
+          "다국어 관리 자동화로 커뮤니케이션 비용 감소",
         ],
       },
     ],
-    detailsPageB: [
-      {
-        category: "다국어 지원",
-        items: [
-          {
-            text: "하드코딩된 번역 데이터에 i18n 적용하여 변수화, 관리 주체를 비즈니스팀으로 변경",
-          },
-          {
-            text: "Google Sheets API 활용하여 빌드 시 번역 데이터 자동 JSON 변환",
-          },
-          { text: "사용자 언어 설정값만 호출하여 초기 로드 최적화" },
-        ],
-      },
-    ],
-    results: [
-      "DOMContentLoaded·Load 속도 10% 감소, 빌드 용량 20% 감소",
-      "Google Sheets 기반 i18n 자동화로 번역 관리 주체를 비즈니스팀으로 이관, 개발 의존성 제거",
-      "Vuex → 동적 store 전환으로 리포트별 독립적 상태 관리 구현, 컴포넌트 간 의존성 해소",
-    ],
-    pageNum: "4 / 6",
-    pageNumB: "5 / 6",
+    pageNum: "4 / 5",
   },
   {
     company: "ANTLabs",
-    companySummary: "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
+    companySummary:
+      "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
     service: "대학교 학사 시스템",
     period: "2019.03 - 2021.07",
     contribution: "40%",
-    title: "대학교 학사 시스템 개발",
-    techs: ["Vue.js", "SCSS", "D3.js"],
-    background: [
-      "기존 레거시 학사/교원 시스템의 복잡성과 비효율성 개선 필요",
-      "노후화된 UI와 레거시 시스템으로 인해 전반적인 사용성 저하",
-      "시스템 복잡성 대비 낮은 개발 생산성과 사용자 만족도로 전면적인 개선 필요",
-    ],
-    detailsPageA: [
+    sections: [
       {
-        // category 없음 → flat list
-        items: [
-          { text: "Flex 기반 레거시를 SPA 구조로 전환" },
-          { text: "교원 시스템 강의 시간표 개발 및 교원 기능 개발" },
-          { text: "공통 컴포넌트 개발 (Editor, FileUploader, TimeTable)" },
-          { text: "DataTable 키보드 이벤트 기능 지원" },
-          { text: "도서관 관리 게시판 기능 개발" },
+        title: "대학교 학사 시스템 개발",
+        techs: ["Vue.js", "SCSS", "D3.js"],
+        background: [
+          "Flex 기반 레거시 시스템의 사용성 저하 및 낮은 개발 생산성",
         ],
+        details: [
+          {
+            items: [
+              { text: "Flex → SPA 구조 전환" },
+              { text: "교원 시스템 기능 개발 (강의 시간표 등)" },
+              {
+                text: "공통 컴포넌트 개발 (Editor, FileUploader, TimeTable)",
+              },
+              { text: "DataTable 키보드 이벤트 지원" },
+            ],
+          },
+        ],
+        results: ["사용자 경험 개선, 유지보수성 향상"],
       },
     ],
-    results: [
-      "Flex 기반 레거시 → Vue.js SPA 전환으로 사용자 경험 및 유지보수성 개선",
-      "공통 컴포넌트(Editor, FileUploader, TimeTable 등) 모듈화로 신규 화면 개발 시 재사용",
-    ],
-    pageNum: "6 / 6",
+    pageNum: "5 / 5",
   },
 ];
