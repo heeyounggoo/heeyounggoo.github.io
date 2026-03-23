@@ -208,7 +208,7 @@ import { career, education, projects } from "../data/resumeData";
     .project-header {
       padding-bottom: 14px;
       border-bottom: 2px solid #f97316;
-      margin-bottom: 14px;
+      margin-bottom: 24px;
     }
 
     .project-header-top {
@@ -220,18 +220,16 @@ import { career, education, projects } from "../data/resumeData";
 
     .company-summary {
       font-size: 12.5px;
-      color: #555555;
-      border-left: 3px solid #f97316;
-      padding-left: 10px;
-      margin: 0;
-      font-style: italic;
+      color: #888888;
+      margin: 4px 0 0;
       line-height: 1.6;
     }
 
     .project-company {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       color: #111111;
+      letter-spacing: -0.5px;
     }
 
     .project-service-sep {
@@ -301,6 +299,12 @@ import { career, education, projects } from "../data/resumeData";
       color: #111111;
       margin-bottom: 4px;
       letter-spacing: -0.3px;
+    }
+
+    .section-divider {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
     }
 
     .project-section {
@@ -573,105 +577,51 @@ import { career, education, projects } from "../data/resumeData";
 
   {
     projects.map((proj) => (
-      <>
-        {/* 첫 번째 페이지 */}
-        <div class="page">
-          <div class="project-header">
-            <div class="project-header-top">
-              <span class="project-company">{proj.company}</span>
+      <div class="page">
+        <div class="project-header">
+          <div class="project-header-top">
+            <span class="project-company">{proj.company}</span>
+          </div>
+          <p class="company-summary">{proj.companySummary}</p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <span class="meta-label">기간</span>
+              <span class="meta-value">{proj.period}</span>
             </div>
-            <p class="company-summary">{proj.companySummary}</p>
-            <div class="project-meta">
-              <div class="meta-item">
-                <span class="meta-label">서비스</span>
-                <span class="meta-value">{proj.service}</span>
-              </div>
-              <span class="meta-sep">|</span>
-              <div class="meta-item">
-                <span class="meta-label">기간</span>
-                <span class="meta-value">{proj.period}</span>
-              </div>
-              <span class="meta-sep">|</span>
-              <div class="meta-item">
-                <span class="meta-label">기여도</span>
-                <span class="meta-value">{proj.contribution}</span>
-              </div>
+            <span class="meta-sep">|</span>
+            <div class="meta-item">
+              <span class="meta-label">기여도</span>
+              <span class="meta-value">{proj.contribution}</span>
             </div>
           </div>
+        </div>
 
-          <div class="project-title">{proj.title}</div>
+        {proj.sections.map((section, idx) => (
+          <div class={idx > 0 ? "section-block section-divider" : "section-block"}>
+            <div class="project-title">{section.title}</div>
 
-          <div class="tech-tags">
-            {proj.techs.map((tech) => (
-              <span class="tech-tag">{tech}</span>
-            ))}
-          </div>
-
-          <div class="project-section">
-            <span class="project-section-label">배경</span>
-            <div class="project-content">
-              <ul>
-                {proj.background.map((b) => (
-                  <li>{b}</li>
-                ))}
-              </ul>
+            <div class="tech-tags">
+              {section.techs?.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
             </div>
-          </div>
 
-          <div class="project-section">
-            <span class="project-section-label">작업 상세</span>
-            <div class="project-content">
-              <ul>
-                {proj.detailsPageA.map((cat) =>
-                  cat.category ? (
-                    <li class="category-item">
-                      <strong>{cat.category}</strong>
-                      <ul class="sub-list">
-                        {cat.items.map((sub) => (
-                          <li>
-                            <span set:html={sub.text} />
-                            {sub.subItems && (
-                              <ul class="sub-sub-list">
-                                {sub.subItems.map((s) => (
-                                  <li set:html={s.text} />
-                                ))}
-                              </ul>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ) : (
-                    cat.items.map((sub) => <li set:html={sub.text} />)
-                  )
-                )}
-              </ul>
-            </div>
-          </div>
-
-          {!proj.detailsPageB && (
             <div class="project-section">
-              <span class="project-section-label">성과</span>
+              <span class="project-section-label">배경</span>
               <div class="project-content">
                 <ul>
-                  {proj.results.map((r) => (
-                    <li>{r}</li>
+                  {section.background.map((b) => (
+                    <li>{b}</li>
                   ))}
                 </ul>
               </div>
             </div>
-          )}
 
-          <span class="page-num">{proj.pageNum}</span>
-        </div>
-
-        {/* 두 번째 페이지 (핏투게더만) */}
-        {proj.detailsPageB && (
-          <div class="page">
             <div class="project-section">
+              <span class="project-section-label">작업 상세</span>
               <div class="project-content">
                 <ul>
-                  {proj.detailsPageB.map((cat) =>
+                  {section.details.map((cat) =>
                     cat.category ? (
                       <li class="category-item">
                         <strong>{cat.category}</strong>
@@ -691,7 +641,18 @@ import { career, education, projects } from "../data/resumeData";
                         </ul>
                       </li>
                     ) : (
-                      cat.items.map((sub) => <li set:html={sub.text} />)
+                      cat.items.map((sub) => (
+                        <li>
+                          <span set:html={sub.text} />
+                          {sub.subItems && (
+                            <ul class="sub-sub-list">
+                              {sub.subItems.map((s) => (
+                                <li set:html={s.text} />
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))
                     )
                   )}
                 </ul>
@@ -702,17 +663,17 @@ import { career, education, projects } from "../data/resumeData";
               <span class="project-section-label">성과</span>
               <div class="project-content">
                 <ul>
-                  {proj.results.map((r) => (
+                  {section.results.map((r) => (
                     <li>{r}</li>
                   ))}
                 </ul>
               </div>
             </div>
-
-            <span class="page-num">{proj.pageNumB}</span>
           </div>
-        )}
-      </>
+        ))}
+
+        <span class="page-num">{proj.pageNum}</span>
+      </div>
     ))
   }
 
