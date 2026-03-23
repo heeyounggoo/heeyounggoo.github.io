@@ -90,7 +90,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
+      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경을 정리한 경험",
     service: "모빌리티 서비스 개발",
     period: "2023.10 - 현재",
     contribution: "40%",
@@ -155,7 +155,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "아키텍처 설계와 DX 개선으로 팀 전체의 개발 생산성을 높인 경험 — 모노레포 도입, 공통 패키지",
+      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경을 정리한 경험",
     service: "모빌리티 서비스 개발",
     period: "2023.10 - 현재",
     contribution: "40%",
@@ -193,19 +193,19 @@ export const projects: ProjectPage[] = [
                 text: "차량 옵션 선택 및 가격 최적화 기능 구현",
                 subItems: [
                   {
-                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용,  Polyfill 별도 구현"
+                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용, Polyfill 별도 구현"
                   }
                 ]
               },
               {
-                text: "Jest 기반의 단위 테스트(Unit Test) 작성",
+                text: "Jest 기반 단위 테스트 작성",
               },
             ],
           },
         ],
         results: [
           "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
-          "Polyfill 구현 경험을 통해 브라우저 호환성 대응 역량 향상"
+          "Polyfill 직접 구현으로 브라우저 호환성 대응 경험 확보"
         ],
       },
     ],
@@ -214,7 +214,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "디자인-개발 간 싱크 오류를 없애기 위해 전사 UI 라이브러리를 직접 설계·배포한 경험",
+      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리를 직접 설계·배포한 경험",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -241,7 +241,7 @@ export const projects: ProjectPage[] = [
                 ],
               },
               {
-                text: "Build Optimization",
+                text: "빌드 최적화",
                 subItems: [
                   {
                     text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
@@ -303,7 +303,7 @@ export const projects: ProjectPage[] = [
   {
     company: "핏투게더",
     companySummary:
-      "성능 병목 분석부터 번들 최적화·다국어 자동화까지, 서비스 품질을 직접 끌어올린 경험",
+      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축까지 서비스 품질을 직접 끌어올린 경험",
     period: "2021.08 - 2023.08",
     contribution: "60%",
     sections: [
