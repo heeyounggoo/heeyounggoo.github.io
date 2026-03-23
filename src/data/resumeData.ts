@@ -218,29 +218,68 @@ export const projects: ProjectPage[] = [
         ],
         details: [
           {
+            category: "패키지 배포 및 최적화 전략",
             items: [
               {
-                text: "npm private package 버전 관리로 레거시/신규 코드 모두 대응",
+                text: "npm private package 관리하여 버전 제어 및 재사용성 극대화",
               },
               {
-                text: "SVG → React 컴포넌트 자동 변환 빌드 스크립트, Tree-shaking 지원",
+                text: "GitHub Actions 배포 자동화, CI/CD 적용",
+                subItems: [
+                  {
+                    text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화",
+                  },
+                ],
               },
               {
-                text: "빌드/패키지 배포/Storybook 배포/릴리즈 문서 생성 자동화",
+                text: "Build Optimization",
+                subItems: [
+                  {
+                    text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
+                  },
+                  {
+                    text: "Tree-shaking 지원하여 번들 사이즈 최적화",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            category: "유연하고 견고한 설계",
+            items: [
+              {
+                text: "CSS Layer (@layer) 활용",
+                subItems: [
+                  {
+                    text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
+                  },
+                  {
+                    text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
+                  },
+                ],
               },
               {
-                text: "<strong>CSS Layer (@layer)</strong> — vanilla-extract CSS 우선순위 문제 해결, reset/global/component/page 순서 통일",
+                text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
               },
               {
-                text: "<strong>Design Token</strong> — vanilla-extract Theme, Vars 활용",
+                text: "ThemeProvider SSR 대응",
+                subItems: [
+                  {
+                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            category: "Storybook을 이용한 컴포넌트 단위 개발",
+            items: [
+              {
+                text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
               },
               {
-                text: "<strong>ThemeProvider SSR 대응</strong> — useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
+                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
               },
-              {
-                text: "Compound Pattern, As-Child Pattern 적용",
-              },
-              { text: "Storybook 기반 컴포넌트 단위 개발" },
             ],
           },
         ],
@@ -269,31 +308,64 @@ export const projects: ProjectPage[] = [
         ],
         details: [
           {
+            category: "서비스 리팩토링",
             items: [
               {
-                text: "데이터 관리 2단계 리팩토링: Vuex → 동적 store 방식 (전역 관리 부적절 판단)",
+                text: "리포트 데이터 관리 방식 리팩토링",
+                subItems: [
+                  {
+                    text: "데이터 관리 2단계 리팩토링 (Vuex → 동적 store 방식)",
+                  },
+                ],
+              },
+              { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
+              { text: "D3.js를 이용하여 Column, Line, Negative Chart 개발" },
+            ],
+          },
+          {
+            category: "성능 개선",
+            items: [
+              { 
+                text: "초기 로드 용량 개선 및 코드 경량화",
+                subItems: [
+                  {
+                    text: "Lazy Loading, Prefetch 적용",
+                  },
+                  {
+                    text: "런타임 동적 라우터 등록 처리(dynamic import 라우터를 사용자 권한에 맞게 동적 등록)",
+                  },
+                  {
+                    text: "TerserPlugin 적용하여 코드 경량화"
+                  }
+                ]
               },
               {
-                text: "<strong>Proxy 기반 Observer Pattern</strong> — 위젯 개별 로딩 지원",
+                text: "Webpack Bundle Analyzer로 라이브러리 최적화",
+                subItems: [
+                  {
+                    text: "tree-shaking을 지원하지 않는 moment, lodash를 date-fns, lodash-es로 대체",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            category: "다국어 지원",
+            items: [
+              {
+                text: "i18n + Google Sheets API 연동, 번역 데이터 JSON 자동화",
               },
               {
-                text: "ROLE 기반 Vue Router 가드닝, 런타임 동적 라우터 등록으로 초기 로드 경량화",
+                text: "하드코딩된 번역 데이터에 i18n 적용하여 변수화, 관리 주체를 비즈니스팀으로 변경",
               },
-              {
-                text: "D3.js 기반 Column, Line, Negative Chart 직접 개발",
-              },
-              {
-                text: "Lazy Loading, Prefetch, tree-shaking 미지원 라이브러리 대체 (moment→date-fns, lodash→lodash-es)",
-              },
-              {
-                text: "i18n + Google Sheets API 연동 — 빌드 시 번역 데이터 자동 변환, 관리 주체를 비즈니스팀으로 이관",
-              },
+              { text: "사용자 언어 설정값만 호출하여 초기 로드 최적화" },
             ],
           },
         ],
         results: [
-          "DOMContentLoaded, Load 속도 10% 감소, 빌드 용량 20% 감소",
-          "다국어 관리 자동화로 커뮤니케이션 비용 감소",
+          "DOMContentLoaded·Load 속도 10% 감소, 빌드 용량 20% 감소",
+          "Google Sheets 기반 i18n 자동화로 번역 관리 주체를 비즈니스팀으로 이관",
+          "Vuex → 동적 store 전환으로 리포트별 독립적 상태 관리 구현, 컴포넌트 간 의존성 해소",
         ],
       },
     ],
