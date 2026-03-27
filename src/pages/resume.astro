@@ -7,8 +7,9 @@ import { career, education, projects } from "../data/resumeData";
 <BaseLayout title="이력서 | 구희영" description="구희영 프론트엔드 개발자 경력기술서">
   <style is:global>
     .page {
-      width: 794px;
-      min-height: 1123px;
+      width: 100%;
+      max-width: 794px;
+      min-height: auto;
       background: #ffffff;
       margin: 24px auto;
       padding: 48px 64px;
@@ -444,12 +445,77 @@ import { career, education, projects } from "../data/resumeData";
       color: #cccccc;
     }
 
+    @media (max-width: 640px) {
+      .page {
+        margin: 0;
+        padding: 24px 20px;
+        box-shadow: none;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .contact-grid {
+        text-align: left;
+      }
+
+      .contact-item {
+        justify-content: flex-start;
+      }
+
+      .header-left h1 {
+        font-size: 26px;
+      }
+
+      .career-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .project-company {
+        font-size: 22px;
+      }
+
+      .project-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .page-num {
+        position: static;
+        display: block;
+        text-align: right;
+        margin-top: 24px;
+        padding-top: 12px;
+        border-top: 1px solid #f5f5f5;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 860px) {
+      .page {
+        margin: 16px auto;
+        padding: 36px 40px;
+      }
+    }
+
     @page {
       size: auto;
       margin: 0;
     }
 
     @media print {
+      .page {
+        width: 794px;
+        min-height: 1123px;
+      }
       html,
       body {
         background: white;

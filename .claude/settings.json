@@ -1,5 +1,8 @@
 {
-  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commits": false,
+    "pullRequests": false
+  },
   "permissions": {
     "allow": [
       "Bash(npm run dev*)",
