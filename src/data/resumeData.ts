@@ -89,7 +89,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경을 정리한 경험",
+      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경 개선",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -104,13 +104,16 @@ export const projects: ProjectPage[] = [
           {
             items: [
               {
-                text: "<strong>Turborepo + pnpm 모노레포 도입 제안</strong> — 프론트엔드 개발 환경 통합",
+                text: "<strong>프론트엔드 개발 환경 통합</strong>",
                 subItems: [
+                  {
+                    text: "Turborepo + pnpm 모노레포 도입 제안",
+                  },
                   {
                     text: "pnpm catalog를 통한 의존성 최적화 및 버전 일관성 유지",
                   },
                   {
-                    text: "CI/CD 효율화 — Turborepo 활용하여 개별 패키지만 빌드/배포 지원",
+                    text: "Turborepo 활용하여 개별 패키지만 빌드/배포 지원하여 CI/CD 효율화",
                   },
                 ]
               },
@@ -154,7 +157,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경을 정리한 경험",
+      "오프라인 중심 모빌리티 도메인을 온라인 계약 시스템으로 전환·설계",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -213,7 +216,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리를 직접 설계·배포한 경험",
+      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리 설계·배포",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -302,7 +305,7 @@ export const projects: ProjectPage[] = [
   {
     company: "핏투게더",
     companySummary:
-      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축까지 서비스 품질을 직접 끌어올린 경험",
+      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축으로 서비스 품질 향상",
     period: "2021.08 - 2023.08",
     contribution: "60%",
     sections: [
@@ -381,7 +384,7 @@ export const projects: ProjectPage[] = [
   {
     company: "ANTLabs",
     companySummary:
-      "Flex 레거시 시스템을 Vue.js SPA로 전환하며 컴포넌트 설계 기초를 쌓은 경험",
+      "Flex 레거시 시스템을 Vue.js SPA로 전환, 공통 컴포넌트 설계",
     period: "2019.03 - 2021.07",
     contribution: "40%",
     sections: [
