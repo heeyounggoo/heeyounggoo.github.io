@@ -514,7 +514,7 @@ import { career, education, projects } from "../data/resumeData";
     @media print {
       .page {
         width: 794px;
-        min-height: 1123px;
+        min-height: auto;
       }
       html,
       body {
@@ -530,7 +530,11 @@ import { career, education, projects } from "../data/resumeData";
       .page {
         margin: 0;
         box-shadow: none;
-        page-break-after: always;
+        page-break-after: auto;
+        page-break-inside: avoid;
+      }
+      .page:last-of-type {
+        page-break-after: avoid;
       }
       header,
       footer,
