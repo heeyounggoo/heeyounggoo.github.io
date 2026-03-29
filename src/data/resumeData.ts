@@ -1,5 +1,6 @@
 export interface CareerItem {
   company: string;
+  companyDesc?: string;
   period: string;
   duration: string;
   position: string;
@@ -46,29 +47,32 @@ export interface ProjectPage {
 export const career: CareerItem[] = [
   {
     company: "라이드",
+    companyDesc: "자동차 온라인 계약 플랫폼 (모빌리티 스타트업)",
     period: "2023.10 – 현재",
     duration: "재직 중",
     position: "프론트엔드 개발자",
     bullets: [
-      "모빌리티 서비스 프론트엔드 환경 설계, 개발",
-      "사내 디자인시스템 구축",
+      "모노레포 전환 제안·설계로 4개 서비스의 공통 코드 통합, 온보딩 셋업 간소화",
+      "디자인시스템(20+ 컴포넌트) 설계·배포, 4개 내부 서비스에 적용",
     ],
   },
   {
     company: "핏투게더",
+    companyDesc: "스포츠 데이터 분석 서비스 (스포츠테크)",
     period: "2021.08 – 2023.08",
     duration: "2년",
     position: "프론트엔드 개발자",
     bullets: [
-      "스포츠 선수 리포트 서비스 개발",
+      "K리그 프로 구단 대상 스포츠 데이터 분석 리포트 개발, i18n 구축으로 해외 계약 확대 기여",
     ],
   },
   {
     company: "ANTLabs",
+    companyDesc: "대학교 학사 시스템 SI (교육 IT)",
     period: "2019.03 – 2021.07",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["대학교 학사 시스템 SPA 전환"],
+    bullets: ["대학 학사 시스템 Flex → Vue.js SPA 전환, 교원용 공통 컴포넌트 설계"],
   },
 ];
 
@@ -89,9 +93,9 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경 개선",
+      "모노레포 전환과 디자인시스템 구축으로 4개 서비스의 프론트엔드 개발 기반 설계",
     period: "2023.10 - 현재",
-    contribution: "40%",
+    contribution: "환경 설계 주도 (FE 3명)",
     sections: [
       {
         title: "프론트엔드 개발 환경 설계",
@@ -104,24 +108,21 @@ export const projects: ProjectPage[] = [
           {
             items: [
               {
-                text: "<strong>프론트엔드 개발 환경 통합</strong>",
+                text: "<strong>Turborepo + pnpm 모노레포 도입 제안·설계</strong>",
                 subItems: [
                   {
-                    text: "Turborepo + pnpm 모노레포 도입 제안",
+                    text: "사용자/어드민 공통 컴포넌트·비즈니스 로직 공유 필요성과 팀 규모를 고려하여 모노레포 전환 제안",
                   },
                   {
-                    text: "pnpm catalog를 통한 의존성 최적화 및 버전 일관성 유지",
+                    text: "Turborepo 캐싱으로 변경된 패키지만 빌드/배포, CI 효율화",
                   },
-                  {
-                    text: "Turborepo 활용하여 개별 패키지만 빌드/배포 지원하여 CI/CD 효율화",
-                  },
-                ]
+                ],
               },
               {
                 text: "<strong>서비스 특성에 따른 프레임워크 분리 의사결정</strong>",
                 subItems: [
                   {
-                    text: "React 19 (Admin): 비즈니스 로직 복잡도가 높아 CSR에 집중, react-query 기반 Optimistic Update",
+                    text: "React 19 (Admin): 비즈니스 로직 복잡도가 높아 CSR에 집중",
                   },
                   {
                     text: "Next.js (Web): 차량 구매 도메인 SEO 최적화, SSR 초기 렌더링 속도 개선",
@@ -132,94 +133,17 @@ export const projects: ProjectPage[] = [
                 text: "<strong>git submodule → npm private package 전환</strong>",
                 subItems: [
                   {
-                    text: "Vite 기반 공통 모듈 패키지 구축 (CJS/ESM 동시 지원)"
-                  },
-                  {
-                    text: "semantic versioning 도입, 개발 환경 셋업 복잡도 감소"
-                  },
-                ]
-              },
-              {
-                text: "zod를 이용한 API 요청/응답값 type 검증",
-              },
-            ],
-          },
-        ],
-        results: [
-          "Turborepo 캐싱 적용으로 CI 빌드 시간 단축, 변경된 패키지만 배포하여 불필요한 빌드 제거",
-          "신규 개발자 온보딩 시 레포 셋업 과정 간소화",
-          "공통 모듈을 패키지로 분리하여 web/admin 간 중복 코드 제거, 수정 시 한 곳만 변경",
-        ],
-      },
-    ],
-    pageNum: "2 / 6",
-  },
-  {
-    company: "라이드",
-    companySummary:
-      "오프라인 중심 모빌리티 도메인을 온라인 계약 시스템으로 전환·설계",
-    period: "2023.10 - 현재",
-    contribution: "40%",
-    sections: [
-      {
-        title: "모빌리티 서비스 개발",
-        techs: ["React", "Next.js", "Jest"],
-        background: [
-          "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
-        ],
-        details: [
-          {
-            category: "온라인 계약 도메인",
-            items: [
-              {
-                text: "자동차 온라인 계약 기능 개발(차량 계약부터 인도까지 전 과정)",
-              },
-              {
-                text: "<strong>계약 데이터 간 의존 관계를 파악하여 기획팀에 정책 보완 제안</strong>",
-                subItems: [
-                  {
-                    text: "예: 인도 안내 발송 후 계약서 재발송 제한 등 역방향 제약 조건 정의 → 데이터 정합성 확보",
+                    text: "Vite 기반 공통 모듈 패키지 구축 (CJS/ESM 동시 지원), semantic versioning 도입",
                   },
                 ],
               },
-              { text: "계약서 서명 기능" },
-              { text: "인수금 PG(Toss Payment) 결제 / 어드민 수납 기능" },
-              { text: "서명, 인수증 작성 등 funnel 뒤로가기 대응" },
-              { text: "서류 다운로드/업로드 기능"}
-            ],
-          },
-          {
-            category: "공통 비즈니스 로직",
-            items: [
-              {
-                text: "차량 옵션 선택 및 가격 최적화 기능 구현",
-                subItems: [
-                  {
-                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용, Polyfill 별도 구현"
-                  }
-                ]
-              },
-              {
-                text: "Jest 기반 단위 테스트 작성",
-              },
             ],
           },
         ],
         results: [
-          "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
-          "Polyfill 직접 구현으로 브라우저 호환성 대응 경험 확보"
+          "신규 개발자 온보딩 시 레포 셋업 과정 간소화",
         ],
       },
-    ],
-    pageNum: "3 / 6",
-  },
-  {
-    company: "라이드",
-    companySummary:
-      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리 설계·배포",
-    period: "2023.10 - 현재",
-    contribution: "40%",
-    sections: [
       {
         title: "디자인시스템",
         techs: ["React", "vanilla-extract", "Storybook"],
@@ -229,133 +153,122 @@ export const projects: ProjectPage[] = [
         ],
         details: [
           {
-            category: "패키지 배포 및 최적화 전략",
+            category: "패키지 배포 및 운영",
             items: [
               {
-                text: "npm private package 관리하여 버전 제어 및 재사용성 극대화",
+                text: "npm private package로 배포, GitHub Actions CI/CD 자동화",
               },
               {
-                text: "GitHub Actions 배포 자동화, CI/CD 적용",
-                subItems: [
-                  {
-                    text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화",
-                  },
-                ],
-              },
-              {
-                text: "빌드 최적화",
-                subItems: [
-                  {
-                    text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
-                  },
-                  {
-                    text: "Tree-shaking 지원하여 번들 사이즈 최적화",
-                  },
-                ],
+                text: "아이콘 패키지: 빌드 스크립트로 수백 개 SVG를 React 컴포넌트로 자동 변환, Tree-shaking 지원",
               },
             ],
           },
           {
-            category: "유연하고 견고한 설계",
+            category: "설계",
             items: [
               {
-                text: "CSS Layer (@layer) 활용",
+                text: "CSS Layer (@layer) 활용하여 vanilla-extract CSS 우선순위 문제 해결",
                 subItems: [
                   {
-                    text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
-                  },
-                  {
-                    text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
+                    text: "reset / global / component / page 순서로 통일된 layer 규칙 제공",
                   },
                 ],
               },
               {
-                text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
+                text: "ThemeProvider SSR 대응: useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
               },
               {
-                text: "ThemeProvider SSR 대응",
-                subItems: [
-                  {
-                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            category: "Storybook을 이용한 컴포넌트 단위 개발",
-            items: [
-              {
-                text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
-              },
-              {
-                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
+                text: "Compound Pattern, As-Child Pattern 등 컴포넌트 패턴 적용 (20+ 컴포넌트)",
               },
             ],
           },
         ],
         results: [
-          "Storybook으로 컴포넌트 상태를 시각적으로 공유하여, 디자이너와 구현 확인 커뮤니케이션 횟수 감소",
-          "토큰 기반으로 테마 변경 시 전체 서비스에 일괄 반영 가능한 구조 확보",
+          "4개 내부 서비스에 디자인시스템 적용, 토큰 기반 테마 변경 시 전체 서비스 일괄 반영 구조 확보",
+          "Storybook으로 컴포넌트 상태를 시각적으로 공유, 디자이너와 커뮤니케이션 비용 감소",
         ],
       },
     ],
-    pageNum: "4 / 6",
+    pageNum: "2 / 5",
+  },
+  {
+    company: "라이드",
+    companySummary:
+      "오프라인 자동차 거래를 온라인으로 전환하는 플랫폼, 웹뷰 기반 계약 도메인 담당",
+    period: "2023.10 - 현재",
+    contribution: "계약 도메인 담당 (FE 3명)",
+    sections: [
+      {
+        title: "모빌리티 서비스 개발",
+        techs: ["React", "Next.js", "Zustand", "Jest"],
+        background: [
+          "오프라인 중심 모빌리티 시장을 온라인으로 전환, 웹뷰 기반 전환에 따라 계약 도메인 담당",
+        ],
+        details: [
+          {
+            category: "온라인 계약 도메인",
+            items: [
+              {
+                text: "자동차 온라인 계약 전 과정 개발 (계약서 서명, PG 결제, 인수금 수납, 인도까지)",
+              },
+              {
+                text: "<strong>계약 데이터 간 의존 관계를 파악하여 기획팀에 정책 보완 제안</strong>",
+                subItems: [
+                  {
+                    text: "인도 안내 발송 후 계약서 재발송 제한 등 역방향 제약 조건 정의 → 데이터 정합성 확보",
+                  },
+                ],
+              },
+              {
+                text: "계약 funnel 뒤로가기 대응 (서명, 인수증 작성 등 단계별 상태 관리)",
+              },
+            ],
+          },
+          {
+            category: "공통 비즈니스 로직",
+            items: [
+              {
+                text: "차량 옵션 선택 및 가격 최적화 기능 구현",
+              },
+              {
+                text: "Jest 기반 단위 테스트 작성",
+              },
+            ],
+          },
+        ],
+        results: [
+          "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안 → 데이터 정합성 확보",
+        ],
+      },
+    ],
+    pageNum: "3 / 5",
   },
   {
     company: "핏투게더",
     companySummary:
-      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축으로 서비스 품질 향상",
+      "K리그 프로 구단 대상 스포츠 데이터 분석 서비스, 성능 개선 및 다국어 시스템 구축",
     period: "2021.08 - 2023.08",
-    contribution: "60%",
+    contribution: "FE 4명",
     sections: [
       {
         title: "스포츠 선수 리포트 서비스 개발",
-        techs: ["Vue.js", "Vuex", "Vue Router", "D3.js", "i18n", "webpack"],
+        techs: ["Vue.js", "Vuex", "D3.js", "i18n", "webpack", "Electron"],
         background: [
-          "초기 로드 시간 길어 사용성 저하",
-          "과도한 props-drilling, 다국어 관리 미흡, 차트 커스터마이징 한계",
+          "K리그 프로 구단 및 해외 팀 대상 축구 선수 신체 데이터 분석 서비스",
+          "초기 로드 시간 길어 사용성 저하, 다국어 관리 미흡",
         ],
         details: [
           {
-            category: "서비스 리팩토링",
-            items: [
-              {
-                text: "리포트 데이터 관리 방식 리팩토링",
-                subItems: [
-                  {
-                    text: "데이터 관리 2단계 리팩토링 (Vuex → 동적 store 방식)",
-                  },
-                ],
-              },
-              { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
-              { text: "D3.js를 이용하여 Column, Line, Negative Chart 개발" },
-            ],
-          },
-          {
             category: "성능 개선",
             items: [
-              { 
-                text: "초기 로드 용량 개선 및 코드 경량화",
-                subItems: [
-                  {
-                    text: "Lazy Loading, Prefetch 적용",
-                  },
-                  {
-                    text: "런타임 동적 라우터 등록 처리(dynamic import 라우터를 사용자 권한에 맞게 동적 등록)",
-                  },
-                  {
-                    text: "TerserPlugin 적용하여 코드 경량화"
-                  }
-                ]
+              {
+                text: "Lazy Loading, Prefetch, 동적 라우터 등록으로 초기 로드 최적화",
               },
               {
-                text: "Webpack Bundle Analyzer로 라이브러리 최적화",
-                subItems: [
-                  {
-                    text: "tree-shaking을 지원하지 않는 moment, lodash를 date-fns, lodash-es로 대체",
-                  },
-                ],
+                text: "Webpack Bundle Analyzer로 번들 분석, moment→date-fns / lodash→lodash-es 전환",
+              },
+              {
+                text: "리포트 데이터 관리 리팩토링: Vuex 전역 store에서 동적 store로 전환, 위젯 간 데이터 충돌 해소",
               },
             ],
           },
@@ -363,55 +276,63 @@ export const projects: ProjectPage[] = [
             category: "다국어 지원",
             items: [
               {
-                text: "i18n + Google Sheets API 연동, 번역 데이터 JSON 자동화",
+                text: "i18n + Google Sheets API 연동 번역 파이프라인 구축, 관리 주체를 비개발 팀으로 이관",
               },
               {
-                text: "하드코딩된 번역 데이터에 i18n 적용하여 변수화, 관리 주체를 비즈니스팀으로 변경",
+                text: "사용자 언어 설정값만 호출하여 초기 로드 최적화",
               },
-              { text: "사용자 언어 설정값만 호출하여 초기 로드 최적화" },
+            ],
+          },
+          {
+            category: "기타",
+            items: [
+              {
+                text: "D3.js 기반 Column, Line, Negative Chart 직접 구현",
+              },
+              {
+                text: "Electron 앱으로 하드웨어 기기에서 선수 심박수(HR) 데이터 추출 기능 개발",
+              },
             ],
           },
         ],
         results: [
           "DOMContentLoaded·Load 속도 10% 감소, 빌드 용량 20% 감소",
-          "Google Sheets 기반 i18n 자동화로 개발 생산성 향상",
-          "Vuex 전역 store에서 동적 store로 전환하여 리포트별 독립적 상태 관리 구현, 위젯 간 데이터 충돌 해소",
+          "i18n 자동화로 중국·스페인어권 국가 계약 확대에 기여",
         ],
       },
     ],
-    pageNum: "5 / 6",
+    pageNum: "4 / 5",
   },
   {
     company: "ANTLabs",
     companySummary:
-      "Flex 레거시 시스템을 Vue.js SPA로 전환, 공통 컴포넌트 설계",
+      "Flex 기반 대학 학사 시스템의 사용성 개선을 위한 Vue.js SPA 전환",
     period: "2019.03 - 2021.07",
-    contribution: "40%",
+    contribution: "FE 2명",
     sections: [
       {
         title: "대학교 학사 시스템 개발",
-        techs: ["Vue.js", "SCSS", "D3.js"],
+        techs: ["Vue.js", "SCSS"],
         background: [
-          "Flex 기반 레거시 시스템의 사용성 저하 및 낮은 개발 생산성",
+          "Flex 기반 레거시 시스템의 사용성 저하, SPA 전환을 통한 UX 개선 목표",
         ],
         details: [
           {
             items: [
-              { text: "Flex → SPA 구조 전환" },
-              { text: "교원 시스템 기능 개발 (강의 시간표 등)" },
               {
-                text: "공통 컴포넌트 개발 (Editor, FileUploader, TimeTable)",
+                text: "Flex → Vue.js SPA 전환, 학사 메뉴 개발 및 공통 컴포넌트(Editor, FileUploader, TimeTable) 설계",
               },
-              { text: "DataTable 키보드 이벤트 지원" },
+              {
+                text: "교수 성적 입력 UX 개선을 위해 DataTable 키보드 이벤트 + 실시간 저장 기능 구현 (자체 제안)",
+              },
             ],
           },
         ],
         results: [
-          "Flex 기반 레거시를 Vue.js SPA로 전환하여 페이지 전환 속도 및 사용성 개선",
-          "Editor, FileUploader, TimeTable 등 공통 컴포넌트를 모듈화하여 교원 시스템 내 반복 개발 제거",
+          "페이지 전환 속도 개선 및 교원 시스템 사용성 향상, 공통 컴포넌트 모듈화로 반복 개발 제거",
         ],
       },
     ],
-    pageNum: "6 / 6",
+    pageNum: "5 / 5",
   },
 ];
