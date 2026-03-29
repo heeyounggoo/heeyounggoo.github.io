@@ -1,5 +1,6 @@
 export interface CareerItem {
   company: string;
+  companyDesc?: string;
   period: string;
   duration: string;
   position: string;
@@ -46,6 +47,7 @@ export interface ProjectPage {
 export const career: CareerItem[] = [
   {
     company: "라이드",
+    companyDesc: "자동차 온라인 계약 플랫폼 (모빌리티 스타트업)",
     period: "2023.10 – 현재",
     duration: "재직 중",
     position: "프론트엔드 개발자",
@@ -56,6 +58,7 @@ export const career: CareerItem[] = [
   },
   {
     company: "핏투게더",
+    companyDesc: "스포츠 데이터 분석 서비스 (스포츠테크)",
     period: "2021.08 – 2023.08",
     duration: "2년",
     position: "프론트엔드 개발자",
@@ -65,6 +68,7 @@ export const career: CareerItem[] = [
   },
   {
     company: "ANTLabs",
+    companyDesc: "대학교 학사 시스템 SI (교육 IT)",
     period: "2019.03 – 2021.07",
     duration: "2년",
     position: "프론트엔드 개발자",
