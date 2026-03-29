@@ -201,6 +201,11 @@ export const projects: ProjectPage[] = [
               },
               {
                 text: "Jest 기반 단위 테스트 작성",
+                subItems: [
+                  {
+                    text: "비즈니스 로직 중심 테스트 케이스 설계, 계약 상태 전이 검증",
+                  },
+                ],
               },
             ],
           },
@@ -305,7 +310,7 @@ export const projects: ProjectPage[] = [
   {
     company: "핏투게더",
     companySummary:
-      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축으로 서비스 품질 향상",
+      "D3.js 기반 데이터 시각화 차트 개발과 초기 로드 성능 최적화로 서비스 품질 향상",
     period: "2021.08 - 2023.08",
     contribution: "60%",
     sections: [
@@ -329,7 +334,17 @@ export const projects: ProjectPage[] = [
                 ],
               },
               { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
-              { text: "D3.js를 이용하여 Column, Line, Negative Chart 개발" },
+              {
+                text: "D3.js 기반 커스텀 데이터 시각화 차트 설계 및 개발",
+                subItems: [
+                  {
+                    text: "Column, Line, Negative 등 다양한 차트 타입 구현, 데이터 기반 동적 렌더링",
+                  },
+                  {
+                    text: "선수 성과 데이터를 직관적으로 표현하는 인터랙티브 대시보드 구축",
+                  },
+                ],
+              },
             ],
           },
           {

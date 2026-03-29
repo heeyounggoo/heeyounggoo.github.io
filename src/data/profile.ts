@@ -6,8 +6,10 @@ export const profile = {
   github: "https://github.com/heeyounggoo",
   skills: {
     Frontend: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js"],
-    "State & Data": ["Zustand", "react-query"],
+    "State & Data": ["Zustand", "TanStack Query"],
     "Styling & Design System": ["vanilla-extract", "Storybook"],
+    Testing: ["Jest"],
+    Visualization: ["D3.js"],
     Tools: ["Git", "Figma", "AWS", "Turborepo", "pnpm"],
   } as Record<string, string[]>,
 };
