@@ -569,28 +569,11 @@ import { career, education, projects } from "../data/resumeData";
     <!-- 기술 스택 -->
     <div class="section">
       <h2>기술스택</h2>
-      {
-        Object.entries(profile.skills).map(([category, items]) => (
-          <div style="margin-bottom: 8px;">
-            <h3
-              style="font-size:12px; color:#888; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;"
-            >
-              {category}
-            </h3>
-            <div class="tech-tags">
-              {items.map((skill) => (
-                <span
-                  class={
-                    category === "Frontend" ? "tech-tag" : "tech-tag secondary"
-                  }
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
+      <div class="tech-tags">
+        {profile.skills.map((skill) => (
+          <span class="tech-tag">{skill}</span>
+        ))}
+      </div>
     </div>
 
     <!-- 경력 -->
