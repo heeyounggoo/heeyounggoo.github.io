@@ -157,7 +157,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "오프라인 중심 모빌리티 도메인을 온라인 계약 시스템으로 전환·설계",
+      "모빌리티 도메인의 온라인 계약 시스템 설계 및 서비스 운영",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -216,7 +216,7 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리 설계·배포",
+      "서비스 확장을 위한 웹 기반 디자인 시스템 설계·배포",
     period: "2023.10 - 현재",
     contribution: "40%",
     sections: [
@@ -305,7 +305,7 @@ export const projects: ProjectPage[] = [
   {
     company: "핏투게더",
     companySummary:
-      "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축으로 서비스 품질 향상",
+      "D3.js 기반 데이터 시각화 대시보드 개발과 성능 최적화로 서비스 품질 향상",
     period: "2021.08 - 2023.08",
     contribution: "60%",
     sections: [
@@ -329,7 +329,17 @@ export const projects: ProjectPage[] = [
                 ],
               },
               { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
-              { text: "D3.js를 이용하여 Column, Line, Negative Chart 개발" },
+              {
+                text: "D3.js 기반 커스텀 데이터 시각화 차트 설계 및 개발",
+                subItems: [
+                  {
+                    text: "Column, Line, Negative 등 다양한 차트 타입 구현, 데이터 기반 동적 렌더링",
+                  },
+                  {
+                    text: "선수 성과 데이터를 직관적으로 표현하는 인터랙티브 대시보드 구축",
+                  },
+                ],
+              },
             ],
           },
           {
