@@ -89,6 +89,95 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
+      "일관성 있는 UI와 확장 가능한 컴포넌트 구조를 위한 사내 디자인시스템 설계·배포",
+    period: "2023.10 - 현재",
+    contribution: "40%",
+    sections: [
+      {
+        title: "디자인시스템",
+        techs: ["React", "Vanilla Extract", "Storybook"],
+        background: [
+          "서비스 확장에 따라 UI 일관성 유지 어려움, 중복 컴포넌트 증가",
+          "CSR/SSR 환경에서 ThemeProvider 적용 시 깜빡임 이슈",
+        ],
+        details: [
+          {
+            category: "CSS Layer 아키텍처 설계 및 토큰 시스템",
+            items: [
+              {
+                text: "CSS Layer (@layer) 기반 스타일 계층 구조 설계",
+                subItems: [
+                  {
+                    text: "Vanilla Extract 사용 시 발생하는 CSS 우선순위 문제 해결",
+                  },
+                  {
+                    text: "reset / global / component / page 순서의 통일된 layer 규칙을 디자인 시스템에서 제공",
+                  },
+                ],
+              },
+              {
+                text: "디자인 토큰을 Vanilla Extract Theme, Vars로 제공 — 테마 변경 시 전체 서비스 일괄 반영",
+              },
+              {
+                text: "ThemeProvider SSR 대응",
+                subItems: [
+                  {
+                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            category: "합성 가능한 컴포넌트 설계",
+            items: [
+              {
+                text: "Compound Pattern, As-Child Pattern 적용 — 유연한 확장을 위한 컴포넌트 API 설계",
+              },
+              {
+                text: "컴포넌트별 인터랙션 규칙 정의 (키보드 사용성, 포커스 관리, 로딩 상태 패턴)",
+              },
+              {
+                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
+              },
+            ],
+          },
+          {
+            category: "패키지 배포 및 최적화",
+            items: [
+              {
+                text: "npm private package 관리, GitHub Actions CI/CD 자동화",
+                subItems: [
+                  {
+                    text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화",
+                  },
+                ],
+              },
+              {
+                text: "빌드 최적화",
+                subItems: [
+                  {
+                    text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
+                  },
+                  {
+                    text: "Tree-shaking 지원하여 번들 사이즈 최적화",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        results: [
+          "Storybook 기반 시각적 QA 체계 구축으로 디자이너와의 구현 확인 커뮤니케이션 횟수 감소",
+          "토큰 기반으로 테마 변경 시 전체 서비스에 일괄 반영 가능한 구조 확보",
+        ],
+      },
+    ],
+    pageNum: "2 / 6",
+  },
+  {
+    company: "라이드",
+    companySummary:
       "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경 개선",
     period: "2023.10 - 현재",
     contribution: "40%",
@@ -152,7 +241,7 @@ export const projects: ProjectPage[] = [
         ],
       },
     ],
-    pageNum: "2 / 6",
+    pageNum: "3 / 6",
   },
   {
     company: "라이드",
@@ -208,95 +297,6 @@ export const projects: ProjectPage[] = [
         results: [
           "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
           "Polyfill 직접 구현으로 브라우저 호환성 대응 경험 확보"
-        ],
-      },
-    ],
-    pageNum: "3 / 6",
-  },
-  {
-    company: "라이드",
-    companySummary:
-      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리 설계·배포",
-    period: "2023.10 - 현재",
-    contribution: "40%",
-    sections: [
-      {
-        title: "디자인시스템",
-        techs: ["React", "vanilla-extract", "Storybook"],
-        background: [
-          "서비스 확장에 따라 UI 일관성 유지 어려움, 중복 컴포넌트 증가",
-          "CSR/SSR 환경에서 ThemeProvider 적용 시 깜빡임 이슈",
-        ],
-        details: [
-          {
-            category: "패키지 배포 및 최적화 전략",
-            items: [
-              {
-                text: "npm private package 관리하여 버전 제어 및 재사용성 극대화",
-              },
-              {
-                text: "GitHub Actions 배포 자동화, CI/CD 적용",
-                subItems: [
-                  {
-                    text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화",
-                  },
-                ],
-              },
-              {
-                text: "빌드 최적화",
-                subItems: [
-                  {
-                    text: "전용 빌드 스크립트를 작성하여 수백 개의 SVG를 React 컴포넌트로 자동화",
-                  },
-                  {
-                    text: "Tree-shaking 지원하여 번들 사이즈 최적화",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            category: "유연하고 견고한 설계",
-            items: [
-              {
-                text: "CSS Layer (@layer) 활용",
-                subItems: [
-                  {
-                    text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
-                  },
-                  {
-                    text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
-                  },
-                ],
-              },
-              {
-                text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
-              },
-              {
-                text: "ThemeProvider SSR 대응",
-                subItems: [
-                  {
-                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            category: "Storybook을 이용한 컴포넌트 단위 개발",
-            items: [
-              {
-                text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
-              },
-              {
-                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
-              },
-            ],
-          },
-        ],
-        results: [
-          "Storybook으로 컴포넌트 상태를 시각적으로 공유하여, 디자이너와 구현 확인 커뮤니케이션 횟수 감소",
-          "토큰 기반으로 테마 변경 시 전체 서비스에 일괄 반영 가능한 구조 확보",
         ],
       },
     ],
