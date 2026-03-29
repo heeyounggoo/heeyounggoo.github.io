@@ -335,7 +335,7 @@ export const projects: ProjectPage[] = [
               },
               { text: "husky + lint-staged 적용하여 코드 컨벤션 유지" },
               {
-                text: "D3.js 기반 커스텀 데이터 시각화 차트 설계 및 개발",
+                text: "D3.js, Highchart 사용하여 데이터 시각화 차트 설계 및 개발",
                 subItems: [
                   {
                     text: "Column, Line, Negative 등 다양한 차트 타입 구현, 데이터 기반 동적 렌더링",
