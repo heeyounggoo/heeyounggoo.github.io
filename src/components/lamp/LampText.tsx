@@ -9,9 +9,9 @@ interface LampTextProps {
 }
 
 export function LampText({ isOn, accentColor }: LampTextProps) {
-  const glowShadow = `0 0 20px ${accentColor}80, 0 0 60px ${accentColor}40, 0 0 100px ${accentColor}20`;
+  const glowShadow = `0 0 40px ${accentColor}AA, 0 0 100px ${accentColor}55, 0 0 200px ${accentColor}22`;
   const [titleScope, titleAnimate] = useAnimate();
-  const [subtitleScope, subtitleAnimate] = useAnimate();
+  const [nameScope, nameAnimate] = useAnimate();
   const prevIsOn = useRef(isOn);
 
   useEffect(() => {
@@ -19,45 +19,46 @@ export function LampText({ isOn, accentColor }: LampTextProps) {
     prevIsOn.current = isOn;
 
     if (isOn && wasOff) {
-      // Flicker on: incandescent warm-up effect
       titleAnimate(
         titleScope.current,
-        { opacity: [0.05, 0.3, 0.1, 0.7, 0.4, 1] },
-        { duration: 0.4, delay: 0.15 },
+        { opacity: [0.03, 0.2, 0.06, 0.5, 0.3, 1] },
+        { duration: 0.5, delay: 0.1 },
       );
-      subtitleAnimate(
-        subtitleScope.current,
-        { opacity: [0.05, 0.25, 0.08, 0.6, 0.35, 1] },
-        { duration: 0.4, delay: 0.2 },
+      nameAnimate(
+        nameScope.current,
+        { opacity: [0.03, 0.15, 0.05, 0.4, 0.25, 1] },
+        { duration: 0.5, delay: 0.15 },
       );
     }
-  }, [isOn, titleAnimate, subtitleAnimate, titleScope, subtitleScope]);
+  }, [isOn, titleAnimate, nameAnimate, titleScope, nameScope]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-2">
+    <div className="pointer-events-none absolute inset-0 z-[5] flex flex-col items-center justify-center gap-4">
       <motion.p
         ref={titleScope}
         animate={
           isOn
-            ? { opacity: 1, textShadow: glowShadow, color: "#ffffff" }
-            : { opacity: 0.05, textShadow: "none", color: "#1a1a1a" }
+            ? { opacity: 0.9, color: "#ffffff" }
+            : { opacity: 0.03, color: "#1a1a1a" }
         }
-        transition={isOn ? { duration: 0.4, delay: 0.15 } : { duration: 0.3 }}
-        className="text-lg font-light uppercase tracking-[0.2em] md:text-xl"
+        transition={isOn ? { duration: 0.5, delay: 0.1 } : { duration: 0.4 }}
+        style={{ textShadow: isOn ? glowShadow : "none" }}
+        className="text-base font-medium uppercase tracking-[0.3em] md:text-lg"
       >
         Frontend Developer
       </motion.p>
       <motion.h1
-        ref={subtitleScope}
+        ref={nameScope}
         animate={
           isOn
-            ? { opacity: 1, textShadow: glowShadow, color: "#ffffff" }
-            : { opacity: 0.05, textShadow: "none", color: "#1a1a1a" }
+            ? { opacity: 1, color: "#ffffff" }
+            : { opacity: 0.03, color: "#1a1a1a" }
         }
-        transition={isOn ? { duration: 0.4, delay: 0.2 } : { duration: 0.3 }}
-        className="text-4xl font-bold tracking-wider md:text-6xl"
+        transition={isOn ? { duration: 0.5, delay: 0.15 } : { duration: 0.4 }}
+        style={{ textShadow: isOn ? glowShadow : "none" }}
+        className="text-[3.5rem] font-black leading-none tracking-tight md:text-[7rem]"
       >
-        Goo Hee Young
+        GOO HEE YOUNG
       </motion.h1>
     </div>
   );

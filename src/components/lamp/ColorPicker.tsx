@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const COLORS = [
   { name: "Orange", value: "#F97316" },
+  { name: "Amber", value: "#F59E0B" },
   { name: "Blue", value: "#3B82F6" },
-  { name: "Green", value: "#22C55E" },
-  { name: "Purple", value: "#A855F7" },
-  { name: "Pink", value: "#EC4899" },
-  { name: "White", value: "#E5E5E5" },
+  { name: "Violet", value: "#8B5CF6" },
+  { name: "Rose", value: "#F43F5E" },
+  { name: "Warm", value: "#FBBF24" },
 ];
 
 interface ColorPickerProps {
@@ -21,15 +21,15 @@ export function ColorPicker({ currentColor, onColorChange }: ColorPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="absolute bottom-8 right-8 z-20">
+    <div className="absolute bottom-6 right-6 z-20">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute bottom-12 right-0 flex gap-2 rounded-full bg-neutral-900/80 px-3 py-2 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-12 right-0 flex gap-2.5 rounded-2xl border border-white/5 bg-white/5 px-4 py-3 backdrop-blur-xl"
           >
             {COLORS.map((color) => (
               <button
@@ -38,12 +38,12 @@ export function ColorPicker({ currentColor, onColorChange }: ColorPickerProps) {
                   onColorChange(color.value);
                   setIsOpen(false);
                 }}
-                className="relative h-6 w-6 rounded-full transition-transform hover:scale-110"
+                className="group relative h-5 w-5 rounded-full transition-transform hover:scale-125"
                 style={{ backgroundColor: color.value }}
                 aria-label={`${color.name} 색상 선택`}
               >
                 {currentColor === color.value && (
-                  <span className="absolute inset-0 rounded-full ring-2 ring-white ring-offset-2 ring-offset-neutral-900" />
+                  <span className="absolute -inset-1 rounded-full ring-1.5 ring-white/60" />
                 )}
               </button>
             ))}
@@ -51,14 +51,13 @@ export function ColorPicker({ currentColor, onColorChange }: ColorPickerProps) {
         )}
       </AnimatePresence>
 
-      {/* Toggle button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/60 backdrop-blur-sm transition-colors hover:bg-neutral-800/80"
-        aria-label="색상 팔레트 열기"
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-colors hover:bg-white/10"
+        aria-label="색상 팔레트"
       >
         <div
-          className="h-5 w-5 rounded-full"
+          className="h-4 w-4 rounded-full"
           style={{ backgroundColor: currentColor }}
         />
       </button>

@@ -14,37 +14,34 @@ export function LampScene() {
   const handleToggle = () => setIsOn((prev) => !prev);
 
   return (
-    <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <div className="relative h-dvh w-full overflow-hidden bg-[#060606]">
       {/* Navigation */}
-      <nav className="absolute top-6 z-20 flex w-full justify-between px-8">
+      <nav className="absolute top-0 z-20 flex w-full justify-between px-8 py-6">
         <Link
           href="/blog"
-          className="text-sm tracking-wide text-neutral-500 transition-colors hover:text-neutral-300"
+          className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 transition-colors duration-300 hover:text-white/60"
         >
           Blog
         </Link>
         <Link
           href="/resume"
-          className="text-sm tracking-wide text-neutral-500 transition-colors hover:text-neutral-300"
+          className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 transition-colors duration-300 hover:text-white/60"
         >
           Resume
         </Link>
       </nav>
 
-      {/* Glow */}
+      {/* Light */}
       <GlowEffect isOn={isOn} accentColor={accentColor} />
 
       {/* Text */}
       <LampText isOn={isOn} accentColor={accentColor} />
 
-      {/* Pull Cord */}
+      {/* Rope (canvas-based physics) */}
       <PullCord onToggle={handleToggle} />
 
       {/* Color Picker */}
-      <ColorPicker
-        currentColor={accentColor}
-        onColorChange={setAccentColor}
-      />
+      <ColorPicker currentColor={accentColor} onColorChange={setAccentColor} />
     </div>
   );
 }
