@@ -1,30 +1,36 @@
 {
   "name": "heeyounggoo-github-io",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.0",
-    "@tailwindcss/vite": "^4.0.0",
-    "astro": "^5.0.0",
-    "tailwindcss": "^4.0.0"
+    "framer-motion": "^12.0.0",
+    "gray-matter": "^4.0.3",
+    "next": "^15.0.0",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^10.1.0",
+    "eslint-config-next": "^15.0.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-astro": "^1.6.0",
-    "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.7.0",
     "typescript-eslint": "^8.57.2"
   }
 }
