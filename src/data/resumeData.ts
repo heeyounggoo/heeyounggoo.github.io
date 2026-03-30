@@ -140,7 +140,7 @@ export const projects: ProjectPage[] = [
                 ]
               },
               {
-                text: "zod를 이용한 API 요청/응답값 type 검증",
+                text: "zod 스키마로 API 요청/응답값 런타임 검증, 백엔드 스펙 불일치 시 프론트에서 조기 감지",
               },
             ],
           },
@@ -184,7 +184,7 @@ export const projects: ProjectPage[] = [
                 ],
               },
               {
-                text: "디자인 토큰을 Vanilla Extract Theme, Vars로 제공 — 테마 변경 시 전체 서비스 일괄 반영",
+                text: "디자인 토큰을 Vanilla Extract Theme, Vars로 제공하여 테마 변경 시 전체 서비스 일괄 반영",
               },
               {
                 text: "ThemeProvider SSR 대응",
@@ -200,7 +200,7 @@ export const projects: ProjectPage[] = [
             category: "유연하고 견고한 컴포넌트 설계",
             items: [
               {
-                text: "Compound Pattern, As-Child Pattern 적용 — 유연한 확장을 위한 컴포넌트 API 설계",
+                text: "Compound Pattern, As-Child Pattern 적용으로 유연한 확장을 위한 컴포넌트 API 설계",
               },
               {
                 text: "컴포넌트별 인터랙션·접근성 규칙 정의 (키보드 내비게이션, 포커스 트랩, 로딩 상태, aria 속성)",
@@ -271,7 +271,7 @@ export const projects: ProjectPage[] = [
                   },
                 ],
               },
-              { text: "다양한 기능 개발 (계약서 서명, 서류 다운로드/업로드)" },
+              { text: "Canvas 기반 전자 서명 기능 구현" },
             ],
           },
           {

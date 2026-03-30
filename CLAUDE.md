@@ -38,3 +38,9 @@ GitHub Actions로 자동 배포. `master` 브랜치 push 시 트리거.
 
 워크플로우: `.github/workflows/deploy.yml`
 
+---
+
+## Rules
+
+- 이력서(`resumeData.ts`) 수정 시 em dash(`—`) 패턴을 사용하지 않는다.
+
