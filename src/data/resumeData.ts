@@ -91,7 +91,7 @@ export const projects: ProjectPage[] = [
     companySummary:
       "모노레포 도입과 공통 패키지 구축으로 팀 개발 환경 개선",
     period: "2023.10 - 현재",
-    contribution: "40%",
+    contribution: "FE 3명",
     sections: [
       {
         title: "프론트엔드 개발 환경 설계",
@@ -140,7 +140,7 @@ export const projects: ProjectPage[] = [
                 ]
               },
               {
-                text: "zod를 이용한 API 요청/응답값 type 검증",
+                text: "zod 스키마로 API 요청/응답값 런타임 검증, 백엔드 스펙 불일치 시 프론트에서 조기 감지",
               },
             ],
           },
@@ -157,85 +157,64 @@ export const projects: ProjectPage[] = [
   {
     company: "라이드",
     companySummary:
-      "오프라인 중심 모빌리티 도메인을 온라인 계약 시스템으로 전환·설계",
+      "일관성 있는 UI와 확장 가능한 컴포넌트 구조를 위한 사내 디자인시스템 설계·배포",
     period: "2023.10 - 현재",
-    contribution: "40%",
-    sections: [
-      {
-        title: "모빌리티 서비스 개발",
-        techs: ["React", "Next.js", "Jest"],
-        background: [
-          "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
-        ],
-        details: [
-          {
-            category: "온라인 계약 도메인",
-            items: [
-              {
-                text: "자동차 온라인 계약 기능 개발(차량 계약부터 인도까지 전 과정)",
-              },
-              {
-                text: "<strong>계약 데이터 간 의존 관계를 파악하여 기획팀에 정책 보완 제안</strong>",
-                subItems: [
-                  {
-                    text: "예: 인도 안내 발송 후 계약서 재발송 제한 등 역방향 제약 조건 정의 → 데이터 정합성 확보",
-                  },
-                ],
-              },
-              { text: "계약서 서명 기능" },
-              { text: "인수금 PG(Toss Payment) 결제 / 어드민 수납 기능" },
-              { text: "서명, 인수증 작성 등 funnel 뒤로가기 대응" },
-              { text: "서류 다운로드/업로드 기능"}
-            ],
-          },
-          {
-            category: "공통 비즈니스 로직",
-            items: [
-              {
-                text: "차량 옵션 선택 및 가격 최적화 기능 구현",
-                subItems: [
-                  {
-                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용, Polyfill 별도 구현"
-                  }
-                ]
-              },
-              {
-                text: "Jest 기반 단위 테스트 작성",
-              },
-            ],
-          },
-        ],
-        results: [
-          "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
-          "Polyfill 직접 구현으로 브라우저 호환성 대응 경험 확보"
-        ],
-      },
-    ],
-    pageNum: "3 / 6",
-  },
-  {
-    company: "라이드",
-    companySummary:
-      "디자인-개발 간 불일치를 줄이기 위해 사내 UI 라이브러리 설계·배포",
-    period: "2023.10 - 현재",
-    contribution: "40%",
+    contribution: "FE 3명",
     sections: [
       {
         title: "디자인시스템",
-        techs: ["React", "vanilla-extract", "Storybook"],
+        techs: ["React", "Vanilla Extract", "Storybook"],
         background: [
           "서비스 확장에 따라 UI 일관성 유지 어려움, 중복 컴포넌트 증가",
           "CSR/SSR 환경에서 ThemeProvider 적용 시 깜빡임 이슈",
         ],
         details: [
           {
-            category: "패키지 배포 및 최적화 전략",
+            category: "CSS Layer 아키텍처 설계 및 토큰 시스템",
             items: [
               {
-                text: "npm private package 관리하여 버전 제어 및 재사용성 극대화",
+                text: "CSS Layer (@layer) 기반 스타일 계층 구조 설계",
+                subItems: [
+                  {
+                    text: "Vanilla Extract 사용 시 발생하는 CSS 우선순위 문제 해결",
+                  },
+                  {
+                    text: "reset / global / component / page 순서의 통일된 layer 규칙을 디자인 시스템에서 제공",
+                  },
+                ],
               },
               {
-                text: "GitHub Actions 배포 자동화, CI/CD 적용",
+                text: "디자인 토큰을 Vanilla Extract Theme, Vars로 제공하여 테마 변경 시 전체 서비스 일괄 반영",
+              },
+              {
+                text: "ThemeProvider SSR 대응",
+                subItems: [
+                  {
+                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            category: "유연하고 견고한 컴포넌트 설계",
+            items: [
+              {
+                text: "Compound Pattern, As-Child Pattern 적용으로 유연한 확장을 위한 컴포넌트 API 설계",
+              },
+              {
+                text: "컴포넌트별 인터랙션·접근성 규칙 정의 (키보드 내비게이션, 포커스 트랩, 로딩 상태, aria 속성)",
+              },
+              {
+                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
+              },
+            ],
+          },
+          {
+            category: "패키지 배포 및 최적화",
+            items: [
+              {
+                text: "npm private package 관리, GitHub Actions CI/CD 자동화",
                 subItems: [
                   {
                     text: "빌드, 패키지 배포, Storybook 배포, 릴리즈 문서 및 태그 생성 자동화",
@@ -255,48 +234,66 @@ export const projects: ProjectPage[] = [
               },
             ],
           },
+        ],
+        results: [
+          "Storybook으로 컴포넌트 상태를 시각적으로 공유, 디자이너와의 커뮤니케이션 비용 감소",
+          "토큰 기반 테마 변경 시 전체 서비스 일괄 반영 구조 확보",
+        ],
+      },
+    ],
+    pageNum: "3 / 6",
+  },
+  {
+    company: "라이드",
+    companySummary:
+      "오프라인 중심 모빌리티 도메인을 온라인 계약 시스템으로 전환·설계",
+    period: "2023.10 - 현재",
+    contribution: "FE 3명",
+    sections: [
+      {
+        title: "모빌리티 서비스 개발",
+        techs: ["React", "Next.js", "Jest"],
+        background: [
+          "오프라인 기반 모빌리티 시장을 온라인 기반으로 전환하는 서비스 개발",
+        ],
+        details: [
           {
-            category: "유연하고 견고한 설계",
+            category: "온라인 계약 도메인",
             items: [
               {
-                text: "CSS Layer (@layer) 활용",
+                text: "자동차 온라인 계약 전 과정 개발 (계약서 서명, PG 결제, 인수금 수납, 서류 관리)",
+              },
+              {
+                text: "<strong>계약 데이터 간 의존 관계를 파악하여 기획팀에 정책 보완 제안</strong>",
                 subItems: [
                   {
-                    text: "vanilla-extract 사용 시 발생하는 CSS 우선순위 문제 해결",
-                  },
-                  {
-                    text: "reset / global / component / page 순서로 통일된 layer 규칙을 디자인 시스템에서 제공",
+                    text: "역방향 제약 조건 정의 → 데이터 정합성 확보",
                   },
                 ],
               },
-              {
-                text: "디자인 시스템 토큰 값을 vanilla-extract Theme, Vars를 활용하여 제공",
-              },
-              {
-                text: "ThemeProvider SSR 대응",
-                subItems: [
-                  {
-                    text: "useServerInsertedHTML 활용, Next.js App Router 깜빡임 해결",
-                  },
-                ],
-              },
+              { text: "Canvas 기반 전자 서명 기능 구현" },
             ],
           },
           {
-            category: "Storybook을 이용한 컴포넌트 단위 개발",
+            category: "공통 비즈니스 로직",
             items: [
               {
-                text: "Compound Pattern, As-Child Pattern 등 적절한 컴포넌트 패턴 적용",
+                text: "차량 옵션 선택 및 가격 최적화 기능 구현",
+                subItems: [
+                  {
+                    text: "Set, Map `intersection`, `difference` 등 최신 메서드를 활용, Polyfill 별도 구현",
+                  },
+                ],
               },
               {
-                text: "Input, Select, Control(Radio, Checkbox), FileUploader, ImageUploader, Notification",
+                text: "Jest 기반 단위 테스트 작성",
               },
             ],
           },
         ],
         results: [
-          "Storybook으로 컴포넌트 상태를 시각적으로 공유하여, 디자이너와 구현 확인 커뮤니케이션 횟수 감소",
-          "토큰 기반으로 테마 변경 시 전체 서비스에 일괄 반영 가능한 구조 확보",
+          "계약 상태 흐름 구현 중 예외 케이스를 발견하고 기획팀에 정책 보완 제안",
+          "Polyfill 직접 구현으로 브라우저 호환성 대응 경험 확보",
         ],
       },
     ],
@@ -307,7 +304,7 @@ export const projects: ProjectPage[] = [
     companySummary:
       "초기 로드 성능 개선, 번들 최적화, 다국어 시스템 구축으로 서비스 품질 향상",
     period: "2021.08 - 2023.08",
-    contribution: "60%",
+    contribution: "FE 4명",
     sections: [
       {
         title: "스포츠 선수 리포트 서비스 개발",
@@ -386,7 +383,7 @@ export const projects: ProjectPage[] = [
     companySummary:
       "Flex 레거시 시스템을 Vue.js SPA로 전환, 공통 컴포넌트 설계",
     period: "2019.03 - 2021.07",
-    contribution: "40%",
+    contribution: "FE 2명",
     sections: [
       {
         title: "대학교 학사 시스템 개발",
