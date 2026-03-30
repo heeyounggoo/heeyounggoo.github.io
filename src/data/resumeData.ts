@@ -72,7 +72,9 @@ export const career: CareerItem[] = [
     period: "2019.03 – 2021.07",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["대학 학사 시스템 Flex → Vue.js SPA 전환, 교원용 공통 컴포넌트 설계"],
+    bullets: [
+      "대학 학사 시스템 Flex → Vue.js SPA 전환, 교원용 공통 컴포넌트 설계",
+    ],
   },
 ];
 
@@ -140,9 +142,7 @@ export const projects: ProjectPage[] = [
             ],
           },
         ],
-        results: [
-          "신규 개발자 온보딩 시 레포 셋업 과정 간소화",
-        ],
+        results: ["신규 개발자 온보딩 시 레포 셋업 과정 간소화"],
       },
       {
         title: "디자인시스템",

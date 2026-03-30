@@ -4,7 +4,10 @@ import { profile } from "../data/profile";
 import { career, education, projects } from "../data/resumeData";
 ---
 
-<BaseLayout title="이력서 | 구희영" description="구희영 프론트엔드 개발자 경력기술서">
+<BaseLayout
+  title="이력서 | 구희영"
+  description="구희영 프론트엔드 개발자 경력기술서"
+>
   <style is:global>
     .page {
       width: 100%;
@@ -576,9 +579,7 @@ import { career, education, projects } from "../data/resumeData";
       {
         Object.entries(profile.skills).map(([category, items]) => (
           <div style="margin-bottom: 8px;">
-            <h3
-              style="font-size:12px; color:#888; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;"
-            >
+            <h3 style="font-size:12px; color:#888; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">
               {category}
             </h3>
             <div class="tech-tags">
@@ -672,7 +673,9 @@ import { career, education, projects } from "../data/resumeData";
         </div>
 
         {proj.sections.map((section, idx) => (
-          <div class={idx > 0 ? "section-block section-divider" : "section-block"}>
+          <div
+            class={idx > 0 ? "section-block section-divider" : "section-block"}
+          >
             <div class="project-title">{section.title}</div>
 
             <div class="tech-tags">
@@ -728,7 +731,7 @@ import { career, education, projects } from "../data/resumeData";
                           )}
                         </li>
                       ))
-                    )
+                    ),
                   )}
                 </ul>
               </div>
@@ -752,11 +755,11 @@ import { career, education, projects } from "../data/resumeData";
     ))
   }
 
-<button
-  id="pdf-btn"
-  onclick="window.print()"
-  title="PDF로 저장"
-  style="
+  <button
+    id="pdf-btn"
+    onclick="window.print()"
+    title="PDF로 저장"
+    style="
     position: fixed;
     bottom: 32px;
     right: 32px;
@@ -774,21 +777,31 @@ import { career, education, projects } from "../data/resumeData";
     justify-content: center;
     transition: background 0.2s, transform 0.2s;
   "
-  onmouseover="this.style.background='#ea580c'; this.style.transform='scale(1.08)'"
-  onmouseout="this.style.background='#F97316'; this.style.transform='scale(1)'"
->
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-    <polyline points="7 10 12 15 17 10"/>
-    <line x1="12" y1="15" x2="12" y2="3"/>
-  </svg>
-</button>
+    onmouseover="this.style.background='#ea580c'; this.style.transform='scale(1.08)'"
+    onmouseout="this.style.background='#F97316'; this.style.transform='scale(1)'"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+  </button>
 
-<style is:global>
-  @media (max-width: 768px) {
-    #pdf-btn {
-      display: none !important;
+  <style is:global>
+    @media (max-width: 768px) {
+      #pdf-btn {
+        display: none !important;
+      }
     }
-  }
-</style>
+  </style>
 </BaseLayout>
