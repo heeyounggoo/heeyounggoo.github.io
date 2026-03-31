@@ -1,5 +1,5 @@
-import { LampScene } from "@/components/lamp/LampScene";
+import { NoirHero } from "@/components/noir/NoirHero";
 
 export default function Home() {
-  return <LampScene />;
+  return <NoirHero />;
 }

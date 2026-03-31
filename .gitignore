@@ -16,3 +16,6 @@ npm-debug.log*
 # Astro
 dist/
 .astro/
+.claude/worktrees
+
+.next
