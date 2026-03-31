@@ -4,9 +4,9 @@ export function PrintButton() {
   return (
     <button
       onClick={() => window.print()}
-      className="rounded-lg bg-neutral-900 px-6 py-2 text-sm text-white transition-colors hover:bg-neutral-700"
+      className="text-sm text-neutral-400 transition-opacity hover:opacity-50"
     >
-      PDF로 저장
+      save as pdf
     </button>
   );
 }

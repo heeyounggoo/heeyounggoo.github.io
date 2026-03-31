@@ -272,21 +272,19 @@ export function NoirHero() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-black">
       <header className="relative z-10 flex items-center justify-between px-8 py-6">
-        <span className="text-sm font-medium tracking-wide">HY</span>
-        <nav className="flex gap-10 text-sm">
-          <a href="/resume" className="transition-opacity hover:opacity-50">
-            resume
+        <span className="text-sm font-bold tracking-wide">920</span>
+        <nav className="flex gap-10 text-sm font-bold">
+          <a href="/about" className="transition-opacity hover:opacity-50">
+            about
+          </a>
+          <a href="/career" className="transition-opacity hover:opacity-50">
+            career
           </a>
           <a href="/blog" className="transition-opacity hover:opacity-50">
             blog
           </a>
         </nav>
-        <a
-          href="/resume"
-          className="text-sm transition-opacity hover:opacity-50"
-        >
-          about
-        </a>
+        <span />
       </header>
 
       <canvas
