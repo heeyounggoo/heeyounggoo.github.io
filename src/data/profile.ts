@@ -1,10 +1,21 @@
 export const profile = {
   name: "구희영",
-  role: "Frontend Developer",
-  bio: "일관성 있는 인터페이스와 확장 가능한 컴포넌트 구조를 설계하고, 디자인시스템과 UX 규칙을 통해 팀 공통 기반을 만드는 프론트엔드 개발자입니다.",
+  role: "Frontend Developer · 7년차",
+  bio: "디자인시스템과 모노레포 아키텍처를 설계하여 팀 공통 개발 기반을 구축하고, 수치 기반으로 성능을 개선하는 프론트엔드 개발자입니다.",
   email: "gmldud628@gmail.com",
   github: "https://github.com/heeyounggoo",
   skills: {
-    "": ["React", "Next.js", "TypeScript", "vanilla-extract", "Storybook"],
+    Frontend: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Vue.js",
+    ],
+    "State & Data": ["TanStack Query", "Zustand", "Vuex", "zod"],
+    Styling: ["vanilla-extract", "Tailwind CSS", "SCSS"],
+    "Build & Infra": ["Turborepo", "pnpm", "Vite", "webpack"],
+    "Testing & DX": ["Storybook", "Jest", "Playwright"],
+    Tools: ["Git", "Figma", "AWS"],
   } as Record<string, string[]>,
 };

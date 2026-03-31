@@ -573,15 +573,28 @@ import { career, education, projects } from "../data/resumeData";
     <!-- 기술 스택 -->
     <div class="section">
       <h2>기술스택</h2>
-      <div class="tech-tags">
-        {
-          Object.values(profile.skills)
-            .flat()
-            .map((skill) => (
-              <span class="tech-tag">{skill}</span>
-            ))
-        }
-      </div>
+      {
+        Object.entries(profile.skills).map(([category, items]) => (
+          <div style="margin-bottom: 10px;">
+            <h3
+              style="font-size:11px; color:#888; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;"
+            >
+              {category}
+            </h3>
+            <div class="tech-tags">
+              {items.map((skill) => (
+                <span
+                  class={
+                    category === "Frontend" ? "tech-tag" : "tech-tag secondary"
+                  }
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
 
     <!-- 경력 -->
@@ -592,6 +605,9 @@ import { career, education, projects } from "../data/resumeData";
           <div class="career-item">
             <div class="career-date">
               <div class="company">{item.company}</div>
+              <div style="font-size:11px; color:#888; margin-top:1px; margin-bottom:4px;">
+                {item.description}
+              </div>
               <div class="duration">{item.period}</div>
               <div style="font-size:11px; color:#aaa; margin-top:2px;">
                 {item.duration}

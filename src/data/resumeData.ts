@@ -1,5 +1,6 @@
 export interface CareerItem {
   company: string;
+  description: string;
   period: string;
   duration: string;
   position: string;
@@ -46,29 +47,38 @@ export interface ProjectPage {
 export const career: CareerItem[] = [
   {
     company: "라이드",
+    description: "차량 렌트·구독 모빌리티 플랫폼",
     period: "2023.10 – 현재",
     duration: "재직 중",
     position: "프론트엔드 개발자",
     bullets: [
-      "모빌리티 서비스 프론트엔드 환경 설계, 개발",
-      "사내 디자인시스템 구축",
+      "모노레포 아키텍처 설계 및 프론트엔드 개발 환경 통합 주도",
+      "사내 디자인시스템 구축 (토큰, 컴포넌트, CI/CD)",
+      "온라인 계약 도메인 설계 및 개발",
     ],
   },
   {
     company: "핏투게더",
+    description: "프로 스포츠 선수 퍼포먼스 분석 B2B SaaS",
     period: "2021.08 – 2023.08",
     duration: "2년",
     position: "프론트엔드 개발자",
     bullets: [
-      "스포츠 선수 리포트 서비스 개발",
+      "스포츠 선수 리포트 서비스 개발 및 성능 최적화",
+      "D3.js 기반 데이터 시각화 컴포넌트 개발",
+      "i18n + Google Sheets API 연동 다국어 시스템 구축",
     ],
   },
   {
     company: "ANTLabs",
+    description: "대학교 학사행정 SI",
     period: "2019.03 – 2021.07",
     duration: "2년",
     position: "프론트엔드 개발자",
-    bullets: ["대학교 학사 시스템 SPA 전환"],
+    bullets: [
+      "Flex 레거시 → Vue.js SPA 전환",
+      "공통 컴포넌트 설계 (Editor, FileUploader, TimeTable 등)",
+    ],
   },
 ];
 
@@ -121,7 +131,7 @@ export const projects: ProjectPage[] = [
                 text: "<strong>서비스 특성에 따른 프레임워크 분리 의사결정</strong>",
                 subItems: [
                   {
-                    text: "React 19 (Admin): 비즈니스 로직 복잡도가 높아 CSR에 집중, react-query 기반 Optimistic Update",
+                    text: "React 19 (Admin): 비즈니스 로직 복잡도가 높아 CSR에 집중, TanStack Query 기반 Optimistic Update",
                   },
                   {
                     text: "Next.js (Web): 차량 구매 도메인 SEO 최적화, SSR 초기 렌더링 속도 개선",
@@ -146,8 +156,8 @@ export const projects: ProjectPage[] = [
           },
         ],
         results: [
-          "Turborepo 캐싱 적용으로 CI 빌드 시간 단축, 변경된 패키지만 배포하여 불필요한 빌드 제거",
-          "신규 개발자 온보딩 시 레포 셋업 과정 간소화",
+          "Turborepo 캐싱으로 CI 빌드 시간 {X}분 → {Y}분 단축, 변경된 패키지만 배포하여 불필요한 빌드 제거",
+          "신규 개발자 온보딩 시 레포 셋업 {X}일 → {Y}일 간소화",
           "공통 모듈을 패키지로 분리하여 web/admin 간 중복 코드 제거, 수정 시 한 곳만 변경",
         ],
       },
@@ -236,8 +246,9 @@ export const projects: ProjectPage[] = [
           },
         ],
         results: [
-          "Storybook으로 컴포넌트 상태를 시각적으로 공유, 디자이너와의 커뮤니케이션 비용 감소",
+          "Storybook으로 컴포넌트 상태 시각적 공유, 디자이너와의 핸드오프 사이클 {X}일 → {Y}일 단축",
           "토큰 기반 테마 변경 시 전체 서비스 일괄 반영 구조 확보",
+          "신규 페이지 UI 구현 시 디자인시스템 컴포넌트 조합으로 개발 시간 {X}% 단축",
         ],
       },
     ],
@@ -370,9 +381,9 @@ export const projects: ProjectPage[] = [
           },
         ],
         results: [
-          "DOMContentLoaded·Load 속도 10% 감소, 빌드 용량 20% 감소",
-          "Google Sheets 기반 i18n 자동화로 개발 생산성 향상",
-          "Vuex 전역 store에서 동적 store로 전환하여 리포트별 독립적 상태 관리 구현, 위젯 간 데이터 충돌 해소",
+          "초기 로드 {X}s → {Y}s ({Z}% 개선), 빌드 용량 20% 감소",
+          "i18n 자동화로 번역 반영 리드타임 {X}일 → 빌드 시 자동 반영, 관리 주체를 비즈니스팀으로 이관",
+          "동적 store 전환으로 리포트별 독립적 상태 관리, 위젯 간 데이터 충돌 해소",
         ],
       },
     ],
